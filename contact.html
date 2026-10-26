@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Contact & Support</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <h2>📞 Contact & Support</h2>
+            <p class="section-subtitle">We're here to help. Reach out to us anytime.</p>
+
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-box">
+                    <h3>✉️ Send Us a Message</h3>
+                    <form id="contactForm" class="platform-form">
+                        <div class="form-group"><label>Your Name *</label><input type="text" id="contactName" placeholder="Your name" required></div>
+                        <div class="form-group"><label>Email *</label><input type="email" id="contactEmail" placeholder="you@email.com" required></div>
+                        <div class="form-group"><label>Subject *</label>
+                            <select id="contactSubject" required>
+                                <option value="">Select subject</option>
+                                <option>General Inquiry</option>
+                                <option>Support Request</option>
+                                <option>Report an Issue</option>
+                                <option>Partnership</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Message *</label><textarea id="contactMessage" rows="5" placeholder="Write your message here..." required></textarea></div>
+                        <button type="submit" class="btn btn-primary btn-full">📤 Send Message</button>
+                    </form>
+                    <div id="contactSuccess" class="confirmation hidden">
+                        <span class="confirmation-icon">✅</span>
+                        <h3>Message Sent!</h3>
+                        <p>We'll get back to you soon.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="contact-faq">
+                    <h3>❓ Frequently Asked Questions</h3>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h4>How do I request a plant?</h4>
+                            <p>Go to the <a href="request.html">Request a Plant</a> page, fill out the form with your details and location, and submit. You'll receive a request ID to track progress.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How do I become a volunteer?</h4>
+                            <p>Visit the <a href="volunteer.html">Volunteer</a> page and register. Volunteers must be 14 or older, and those under 18 need parent/guardian consent.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How can I track my request?</h4>
+                            <p>Log in to your <a href="dashboard.html">Dashboard</a> to see all your requests and their current status.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How is plant health tracked?</h4>
+                            <p>After plantation, authorized volunteers conduct regular checks (1-month, 3-month). Updates are recorded on the <a href="plantcare.html">Plant Care</a> page.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Can I report an issue?</h4>
+                            <p>Yes! Use the contact form on this page or select "Report an Issue" as the subject.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Info -->
+            <div class="dash-section" style="margin-top:3rem">
+                <h3>🛟 Support Information</h3>
+                <div class="features-grid">
+                    <div class="feature-card"><span class="feature-icon">✉️</span><h4>Email Support</h4><p>support@greenpakistan.pk</p></div>
+                    <div class="feature-card"><span class="feature-icon">📞</span><h4>Phone Support</h4><p>051-XXXXXXX</p></div>
+                    <div class="feature-card"><span class="feature-icon">🕐</span><h4>Hours</h4><p>Mon-Sat: 9AM - 6PM</p></div>
+                    <div class="feature-card"><span class="feature-icon">📍</span><h4>Office</h4><p>Islamabad, Pakistan</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

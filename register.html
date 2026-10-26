@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="signin.html">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <span class="auth-icon">🌱</span>
+                        <h2>Create Account</h2>
+                        <p>Join Green Pakistan and make a difference</p>
+                    </div>
+
+                    <form id="registerForm" class="platform-form">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="regName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="regEmail" placeholder="you@email.com" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Password *</label>
+                                <input type="password" id="regPass" placeholder="Min 6 characters" minlength="6" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password *</label>
+                                <input type="password" id="regPassConfirm" placeholder="Confirm password" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Account Type *</label>
+                            <div class="account-type-selector">
+                                <label class="account-type-option">
+                                    <input type="radio" name="accountType" value="customer" checked>
+                                    <div class="account-type-card">
+                                        <span class="account-type-icon">🌳</span>
+                                        <span class="account-type-name">Customer</span>
+                                        <span class="account-type-desc">Request plants for your area</span>
+                                    </div>
+                                </label>
+                                <label class="account-type-option">
+                                    <input type="radio" name="accountType" value="volunteer">
+                                    <div class="account-type-card">
+                                        <span class="account-type-icon">🌿</span>
+                                        <span class="account-type-name">Volunteer</span>
+                                        <span class="account-type-desc">Join plantation activities</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="regTerms" required>
+                            I agree to the <a href="about.html" style="color:var(--g600);font-weight:600">Terms & Conditions</a>
+                        </label>
+                        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="signin.html">Sign In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

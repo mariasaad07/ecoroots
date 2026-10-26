@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Plant Locations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html" class="active">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <h2>📍 Plant Locations</h2>
+            <p class="section-subtitle">Explore plantation locations across Pakistan.</p>
+
+            <!-- Filters -->
+            <div class="loc-filters">
+                <select id="locFilterProvince"><option value="all">All Provinces</option><option>Punjab</option><option>Sindh</option><option>KPK</option><option>Balochistan</option><option>Islamabad</option></select>
+                <select id="locFilterCity"><option value="all">All Cities</option></select>
+                <select id="locFilterType"><option value="all">All Plant Types</option><option value="tree">🌳 Trees</option><option value="fruit">🍎 Fruit</option><option value="flower">🌸 Flowers</option><option value="shrub">🌿 Shrubs</option><option value="herb">🌱 Herbs</option></select>
+                <select id="locFilterStatus"><option value="all">All Status</option><option value="healthy">Healthy</option><option value="needs_care">Needs Care</option><option value="pending">Pending</option></select>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="loc-map-container">
+                <div class="loc-map-placeholder">
+                    <h3>🗺️ Pakistan Plantation Map</h3>
+                    <p>Interactive map showing all plantation locations.</p>
+                    <div class="map-dots" id="mapDots"></div>
+                </div>
+            </div>
+
+            <!-- Location Cards -->
+            <div class="dash-section">
+                <h3>📋 All Locations</h3>
+                <div id="locationsList" class="locations-grid">
+                    <p class="empty-state">No locations found.</p>
+                </div>
+            </div>
+
+            <!-- Location Detail Modal -->
+            <div id="locModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="locModalTitle">Location Details</h3>
+                        <button class="modal-close" onclick="document.getElementById('locModal').classList.add('hidden')">✕</button>
+                    </div>
+                    <div id="locModalBody"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="locations.js"></script>
+</body>
+</html>

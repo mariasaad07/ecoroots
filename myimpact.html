@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — My Impact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <h2>🏆 My Impact</h2>
+            <p class="section-subtitle">Your personal environmental contribution tracker.</p>
+
+            <div id="myImpactContent">
+                <!-- Personal Stats -->
+                <div class="dash-stats">
+                    <div class="dash-stat-card"><span class="dash-stat-icon">🌱</span><div><span class="dash-stat-num" id="miPlants">0</span><span class="dash-stat-label">Plants Contributed</span></div></div>
+                    <div class="dash-stat-card"><span class="dash-stat-icon">✅</span><div><span class="dash-stat-num" id="miCompleted">0</span><span class="dash-stat-label">Completed Activities</span></div></div>
+                    <div class="dash-stat-card"><span class="dash-stat-icon">📍</span><div><span class="dash-stat-num" id="miAreas">0</span><span class="dash-stat-label">Areas Visited</span></div></div>
+                    <div class="dash-stat-card"><span class="dash-stat-icon">🌳</span><div><span class="dash-stat-num" id="miCurrent">0</span><span class="dash-stat-label">Current Tasks</span></div></div>
+                </div>
+
+                <!-- Achievement Badges -->
+                <div class="dash-section">
+                    <h3>🏆 Achievement Badges</h3>
+                    <div id="myBadges" class="achievements-grid">
+                        <p class="empty-state">Join as a volunteer and complete tasks to earn badges!</p>
+                    </div>
+                </div>
+
+                <!-- Progress to Next Badge -->
+                <div class="dash-section">
+                    <h3>📈 Progress to Next Achievement</h3>
+                    <div id="badgeProgress" class="badge-progress">
+                        <p class="empty-state">Register as a volunteer to start tracking progress.</p>
+                    </div>
+                </div>
+
+                <!-- Certificates -->
+                <div class="dash-section">
+                    <h3>🏆 Certificates Earned</h3>
+                    <div id="myCertsSection">
+                        <p class="empty-state">No certificates earned yet. Complete tasks that get verified to earn certificates!</p>
+                    </div>
+                    <div id="myCertsPreview"></div>
+                    <div class="cert-sample-preview" style="margin-top:1.5rem">
+                        <h4 style="color:var(--g800);margin-bottom:1rem">🖼️ Certificate Preview</h4>
+                        <img src="certificate-sample.svg" alt="Certificate Preview" style="width:100%;max-width:500px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.15);display:block;margin:0 auto">
+                        <p style="text-align:center;color:var(--g600);font-size:.85rem;margin-top:1rem">Complete and verify tasks to earn your own certificate!</p>
+                    </div>
+                </div>
+
+                <!-- Activity History -->
+                <div class="dash-section">
+                    <h3>📜 Activity History</h3>
+                    <div id="activityHistory" class="activity-list">
+                        <p class="empty-state">No activities yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="myimpact.js"></script>
+</body>
+</html>

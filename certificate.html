@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Certificate</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        .cert-page{padding:3rem 1.5rem;display:flex;flex-direction:column;align-items:center;min-height:100vh;background:linear-gradient(135deg,#fbfdff 0%,#f4faff 30%,#fdf5fb 70%,#fbfdff 100%);position:relative}
+        .cert-page::before{content:'🌸 🌺 🌼 🌷 🌹 🌻';position:absolute;top:80px;left:0;right:0;font-size:1.5rem;opacity:.06;pointer-events:none;text-align:center;letter-spacing:2rem}
+        .cert-frame{background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(2,132,199,.15);max-width:720px;width:100%;overflow:hidden;border:3px solid var(--g600);position:relative}
+        .cert-frame::before{content:'🌸';position:absolute;top:10px;right:10px;font-size:2rem;opacity:.06;pointer-events:none;z-index:1}
+        .cert-frame::after{content:'🌺';position:absolute;bottom:10px;left:10px;font-size:2rem;opacity:.06;pointer-events:none;z-index:1}
+        .cert-inner{padding:3rem 2.5rem;text-align:center;position:relative}
+        .cert-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:5rem;opacity:.03;pointer-events:none;white-space:nowrap;color:var(--g800);font-weight:800}
+        .cert-header-icon{font-size:3rem;margin-bottom:.5rem}
+        .cert-org{font-size:.9rem;color:var(--g600);font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem}
+        .cert-title{font-size:1.8rem;font-weight:800;color:var(--g800);margin-bottom:.25rem;line-height:1.3}
+        .cert-subtitle{font-size:.95rem;color:var(--g600);margin-bottom:1.5rem;font-style:italic}
+        .cert-divider{width:80px;height:3px;background:linear-gradient(90deg,var(--pink),var(--g500),var(--pink));margin:0 auto 1.5rem;border-radius:2px}
+        .cert-awarded-to{font-size:.8rem;color:var(--g600);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem}
+        .cert-name{font-size:2.2rem;font-weight:700;color:var(--g700);margin-bottom:.5rem;font-family:Georgia,serif}
+        .cert-message{font-size:.9rem;color:var(--g700);max-width:480px;margin:1.25rem auto;line-height:1.7}
+        .cert-details{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 2rem;max-width:420px;margin:1.5rem auto;text-align:left}
+        .cert-detail{padding:.5rem 0;border-bottom:1px dashed var(--g300)}
+        .cert-detail-label{font-size:.65rem;color:var(--g600);text-transform:uppercase;letter-spacing:1px}
+        .cert-detail-value{font-size:.9rem;color:var(--g800);font-weight:600}
+        .cert-verification{margin-top:1.25rem;padding:.6rem 1.25rem;background:linear-gradient(135deg,#f1f9ff,#e8f4ff);border-radius:8px;display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--g700);font-weight:600;border:1px solid var(--g300)}
+        .cert-footer{margin-top:2rem;display:flex;justify-content:space-between;align-items:flex-end;max-width:380px;margin-left:auto;margin-right:auto}
+        .cert-signature{text-align:center}
+        .cert-signature-line{width:130px;border-top:2px solid var(--g600);margin-bottom:.25rem}
+        .cert-signature-name{font-size:.75rem;color:var(--g700);font-weight:600}
+        .cert-signature-role{font-size:.65rem;color:var(--g600)}
+        .cert-logo{font-size:1.5rem}
+        .cert-id{margin-top:1.25rem;font-size:.7rem;color:var(--g600);letter-spacing:1px}
+
+        /* Buttons Below Certificate */
+        .cert-buttons-section{max-width:720px;width:100%;margin-top:2rem;text-align:center}
+        .cert-buttons-section h3{color:var(--g800);font-size:1.2rem;margin-bottom:1rem}
+        .cert-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+        .cert-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;border-radius:var(--rs);font-size:.95rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all .3s ease;font-family:inherit}
+        .cert-btn-download{background:linear-gradient(135deg,var(--g600),var(--g700));color:#fff;box-shadow:0 4px 14px rgba(2,132,199,.4)}
+        .cert-btn-download:hover{background:linear-gradient(135deg,var(--g700),var(--g800));transform:translateY(-2px);box-shadow:0 6px 20px rgba(2,132,199,.5)}
+        .cert-btn-print{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff;box-shadow:0 4px 14px rgba(59,130,246,.4)}
+        .cert-btn-print:hover{background:linear-gradient(135deg,#2563eb,#1d4ed8);transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,130,246,.5)}
+        .cert-btn-share{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 4px 14px rgba(139,92,246,.4)}
+        .cert-btn-share:hover{background:linear-gradient(135deg,#7c3aed,#6d28d9);transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,92,246,.5)}
+        .cert-mute{margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.85rem;color:var(--g600)}
+        .cert-mute input{accent-color:var(--g600)}
+
+        .not-found{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;padding:2rem}
+        .not-found-icon{font-size:4rem;margin-bottom:1rem}
+        @media print{.cert-buttons-section{display:none!important}.cert-frame{box-shadow:none}.cert-page{padding:0;background:#fff}}
+        @media(max-width:600px){.cert-inner{padding:2rem 1.25rem}.cert-title{font-size:1.4rem}.cert-name{font-size:1.6rem}.cert-details{grid-template-columns:1fr}.cert-buttons{flex-direction:column;align-items:center}}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="request.html">Request Planting</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cert-page" id="certPage">
+        <!-- Certificate Frame -->
+        <div class="cert-frame" id="certFrame">
+            <div class="cert-inner">
+                <div class="cert-watermark">GREEN PAKISTAN</div>
+                <div class="cert-header-icon">🌳</div>
+                <div class="cert-org">Green Pakistan</div>
+                <div class="cert-title">Certificate of Environmental Contribution</div>
+                <div class="cert-subtitle">Grow Today, Green Tomorrow</div>
+                <div class="cert-divider"></div>
+                <div class="cert-awarded-to">This certificate is proudly awarded to</div>
+                <div class="cert-name" id="certVolName">MARIA SAAD</div>
+                <div class="cert-message">
+                    This certificate is awarded in recognition of your valuable contribution to plantation and environmental improvement. Your dedication to growing a greener Pakistan makes a real difference.
+                </div>
+                <div class="cert-details">
+                    <div class="cert-detail"><div class="cert-detail-label">Task / Activity</div><div class="cert-detail-value" id="certTaskName">F-9 Park Tree Plantation Drive</div></div>
+                    <div class="cert-detail"><div class="cert-detail-label">Plants Contributed</div><div class="cert-detail-value" id="certPlants">15 plants</div></div>
+                    <div class="cert-detail"><div class="cert-detail-label">Location</div><div class="cert-detail-value" id="certLocation">F-9 Park, Islamabad</div></div>
+                    <div class="cert-detail"><div class="cert-detail-label">Completion Date</div><div class="cert-detail-value" id="certDate">January 15, 2026</div></div>
+                </div>
+                <div class="cert-verification" id="certVerification">
+                    <span>✅</span>
+                    <span>Verified & Issued by Green Pakistan</span>
+                </div>
+                <div class="cert-footer">
+                    <div class="cert-signature">
+                        <div class="cert-signature-line"></div>
+                        <div class="cert-signature-name" style="font-family:Georgia,serif;font-style:italic;font-size:1.8rem;color:var(--g700);margin-top:.25rem">M</div>
+                        <div class="cert-signature-role">Authorized Signature</div>
+                    </div>
+                    <div class="cert-logo">🌱</div>
+                    <div class="cert-signature">
+                        <div class="cert-signature-line"></div>
+                        <div class="cert-signature-name">Green Pakistan</div>
+                        <div class="cert-signature-role">Platform</div>
+                    </div>
+                </div>
+                <div class="cert-id" id="certUniqueId">CERT-MARIA001</div>
+            </div>
+        </div>
+
+        <!-- Buttons Below Certificate -->
+        <div class="cert-buttons-section">
+            <h3>📄 Certificate Actions</h3>
+            <div class="cert-buttons">
+                <button class="cert-btn cert-btn-download" id="certDownloadBtn">📥 Download Certificate</button>
+                <button class="cert-btn cert-btn-print" onclick="window.print()">🖨️ Print Certificate</button>
+                <button class="cert-btn cert-btn-share" id="certShareBtn">🔗 Share Certificate</button>
+            </div>
+            <div class="cert-mute">
+                <input type="checkbox" id="muteCelebration">
+                <label for="muteCelebration">🔇 Mute celebration sound</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="certNotFound" class="not-found hidden">
+        <div class="not-found-icon">❌</div>
+        <h2>Certificate Not Found</h2>
+        <p style="color:var(--g600);margin:1rem 0">This certificate does not exist or has been removed.</p>
+        <a href="volunteer.html" class="btn btn-primary">Back to Volunteer</a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="certificate.js"></script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Grow Today, Green Tomorrow</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== Canvas Painted Background ===== */
+        .canvas-bg{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
+        .canvas-bg svg{position:absolute;width:100%;height:100%}
+
+        /* ===== Hero ===== */
+        .home-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 1.5rem 4rem;position:relative;overflow:hidden}
+        .hero-paint-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0}
+        .hero-paint-bg svg{width:100%;height:100%}
+        .hero-content{position:relative;z-index:5;max-width:850px}
+        .hero-h1{font-size:3.8rem;font-weight:800;color:var(--g900,#0c4a6e);margin-bottom:.75rem;text-shadow:0 2px 10px rgba(255,255,255,.6);line-height:1.1}
+        .hero-h1 .highlight{background:linear-gradient(135deg,#0284c7,#0369a1,#075985);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
+        .hero-sub{font-size:1.3rem;color:var(--g700,#0369a1);margin-bottom:.5rem;font-weight:400}
+        .hero-motto{font-size:1.7rem;color:#0284c7;font-weight:700;margin-bottom:2rem;font-style:italic;font-family:Georgia,serif;text-shadow:0 1px 6px rgba(255,255,255,.8)}
+        .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+        .hero-btns .btn-primary{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 6px 20px rgba(245,158,11,.5);padding:.9rem 2rem}
+        .hero-btns .btn-primary:hover{background:linear-gradient(135deg,#d9770b,#b45309);transform:translateY(-3px);box-shadow:0 8px 25px rgba(245,158,11,.6)}
+        .hero-btns .btn-secondary{background:rgba(255,255,255,.65);color:var(--g700,#0369a1);border:2px solid rgba(255,255,255,.9);backdrop-filter:blur(8px);padding:.9rem 2rem}
+        .hero-btns .btn-secondary:hover{background:#fff;border-color:var(--g400,#38bdf8);transform:translateY(-3px);color:var(--g800,#075985)}
+        .hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+        .hero-stat{text-align:center;background:rgba(255,255,255,.6);backdrop-filter:blur(10px);padding:1rem 1.5rem;border-radius:16px;border:1px solid rgba(255,255,255,.8)}
+        .hero-stat span{display:block;font-size:2.2rem;font-weight:800;color:var(--g800,#075985);text-shadow:0 1px 4px rgba(255,255,255,.8)}
+        .hero-stat small{color:var(--g600,#0284c7);font-size:.85rem}
+
+        /* ===== Floating Flowers ===== */
+        .flower-float{position:absolute;pointer-events:none;z-index:1;animation:flowerFloat 7s ease-in-out infinite}
+        @keyframes flowerFloat{0%,100%{transform:translateY(0) rotate(0deg) scale(1)}25%{transform:translateY(-12px) rotate(5deg) scale(1.05)}50%{transform:translateY(-8px) rotate(-3deg) scale(1)}75%{transform:translateY(-15px) rotate(4deg) scale(1.03)}}
+        .leaf-sway{animation:leafSway 5s ease-in-out infinite}
+        @keyframes leafSway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+        .bloom-pulse{animation:bloomPulse 3s ease-in-out infinite}
+        @keyframes bloomPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:1}}
+
+        /* ===== Painted Sections ===== */
+        .paint-section{position:relative;padding:5rem 2rem;overflow:hidden}
+        .paint-section-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none}
+        .paint-section-bg svg{width:100%;height:100%}
+        .paint-section-content{position:relative;z-index:2}
+
+        /* Mission */
+        .home-mission{background:linear-gradient(135deg,#fefce8 0%,#fbfdff 40%,#fce7f3 100%)}
+        .mission-box{max-width:750px;margin:0 auto;text-align:center}
+        .mission-icon{font-size:4rem;margin-bottom:1rem}
+        .mission-quote{font-size:1.35rem;color:var(--g800);font-style:italic;line-height:1.9;font-family:Georgia,serif;margin-bottom:1rem}
+        .mission-divider{width:100px;height:3px;background:linear-gradient(90deg,transparent,var(--pink),var(--g500),var(--pink),transparent);margin:1.25rem auto;border-radius:2px}
+        .mission-author{font-size:.85rem;color:var(--g600);text-transform:uppercase;letter-spacing:2px}
+
+        /* How It Works */
+        .home-how{background:linear-gradient(180deg,#fbfdff 0%,#f4faff 50%,#fbfdff 100%)}
+        .section-title{text-align:center;margin-bottom:3rem;position:relative;z-index:2}
+        .section-title h2{font-size:2.2rem;color:var(--g800);margin-bottom:.5rem}
+        .section-title p{color:var(--g600);font-size:1.05rem}
+        .how-flow{display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap;max-width:1100px;margin:0 auto;position:relative;z-index:2}
+        .how-step{background:linear-gradient(135deg,#fff 0%,#fbfdff 100%);border-radius:20px;padding:1.75rem 1.25rem;text-align:center;border:2px solid var(--g200);min-width:140px;transition:all .3s ease;position:relative;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.04)}
+        .how-step::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g400),var(--pink),var(--g400))}
+        .how-step::after{content:'🌸';position:absolute;top:6px;right:6px;font-size:1.2rem;opacity:.15;pointer-events:none}
+        .how-step:hover{border-color:var(--g400);box-shadow:0 10px 30px rgba(2,132,199,.12);transform:translateY(-5px)}
+        .how-step-num{width:40px;height:40px;background:linear-gradient(135deg,var(--g600),var(--g700));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:700;margin:0 auto .6rem;box-shadow:0 3px 10px rgba(2,132,199,.3)}
+        .how-step-icon{font-size:2.2rem;display:block;margin-bottom:.4rem}
+        .how-step h4{color:var(--g800);font-size:.95rem;margin-bottom:.2rem}
+        .how-step p{color:var(--g600);font-size:.78rem;line-height:1.4}
+        .how-arrow{display:flex;align-items:center;font-size:1.8rem;color:var(--g400);margin:0 .3rem;padding:0 .5rem}
+
+        /* Features */
+        .home-features{background:linear-gradient(180deg,#fff 0%,#f4faff 40%,#fff 100%)}
+        .features-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1050px;margin:0 auto;position:relative;z-index:2}
+        .feature-showcase-card{background:linear-gradient(145deg,#fff 0%,#fbfdff 50%,#f4faff 100%);border-radius:24px;padding:2.25rem;text-align:center;border:2px solid var(--g200);transition:all .4s ease;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.04)}
+        .feature-showcase-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(14,165,233,.08) 0%,transparent 70%);border-radius:50%}
+        .feature-showcase-card::after{content:'';position:absolute;bottom:-40px;left:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(2,132,199,.08) 0%,transparent 70%);border-radius:50%}
+        .feature-showcase-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(2,132,199,.15);border-color:var(--g400)}
+        .feature-showcase-icon{width:90px;height:90px;background:linear-gradient(135deg,var(--g400),var(--g600));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.8rem;margin:0 auto 1.25rem;box-shadow:0 6px 20px rgba(2,132,199,.35);position:relative;z-index:2}
+        .feature-showcase-card h4{color:var(--g800);margin-bottom:.5rem;font-size:1.15rem;position:relative;z-index:2}
+        .feature-showcase-card p{color:var(--g600);font-size:.92rem;line-height:1.7;position:relative;z-index:2}
+
+        /* Featured Areas */
+        .home-areas{background:linear-gradient(180deg,#fbfdff 0%,#fff 50%,#fbfdff 100%)}
+        .areas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;max-width:1000px;margin:0 auto;position:relative;z-index:2}
+        .area-card{background:linear-gradient(135deg,#fff,#fbfdff);border-radius:20px;padding:1.75rem;text-align:center;border:2px solid var(--g200);transition:all .3s ease;position:relative;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.04)}
+        .area-card::before{content:'🌺';position:absolute;top:-8px;right:-8px;font-size:2.5rem;opacity:.1;pointer-events:none}
+        .area-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(2,132,199,.12);border-color:var(--g400)}
+        .area-card h4{color:var(--g800);margin-bottom:.25rem}
+        .area-card p{color:var(--g600);font-size:.88rem}
+        .area-plants{font-size:1.6rem;font-weight:800;color:var(--g700);margin:.75rem 0}
+
+        /* CTA */
+        .home-cta{position:relative;padding:5rem 2rem;overflow:hidden;text-align:center}
+        .cta-paint-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0}
+        .cta-paint-bg svg{width:100%;height:100%}
+        .home-cta h2{color:var(--g900,#0c4a6e);font-size:2.2rem;margin-bottom:1rem;position:relative;z-index:2}
+        .home-cta p{color:var(--g700,#0369a1);max-width:550px;margin:0 auto 2rem;position:relative;z-index:2;line-height:1.7;font-size:1.05rem}
+        .cta-btns{display:flex;gap:1rem;justify-content:center;position:relative;z-index:2}
+        .btn-gold{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:.9rem 2rem;border-radius:12px;text-decoration:none;font-weight:600;border:none;transition:all .3s;box-shadow:0 6px 20px rgba(245,158,11,.45)}
+        .btn-gold:hover{background:linear-gradient(135deg,#d9770b,#b45309);transform:translateY(-3px);box-shadow:0 8px 25px rgba(245,158,11,.55)}
+        .btn-outline-white{background:rgba(255,255,255,.65);color:var(--g700,#0369a1);padding:.9rem 2rem;border-radius:12px;text-decoration:none;font-weight:600;border:2px solid rgba(255,255,255,.9);transition:all .3s;backdrop-filter:blur(5px)}
+        .btn-outline-white:hover{background:#fff;border-color:var(--g400,#38bdf8);transform:translateY(-3px);color:var(--g800,#075985)}
+
+        /* Responsive */
+        @media(max-width:768px){
+            .hero-h1{font-size:2.6rem}
+            .hero-motto{font-size:1.35rem}
+            .features-showcase{grid-template-columns:1fr}
+            .how-flow{flex-direction:column;align-items:center}
+            .how-arrow{transform:rotate(90deg);margin:.25rem 0}
+            .hero-stats{gap:1rem}
+            .cta-btns{flex-direction:column;align-items:center}
+            .hero-stat{padding:.75rem 1rem}
+        }
+        @media(max-width:480px){
+            .hero-h1{font-size:2rem}
+            .hero-stats{flex-direction:column;gap:.75rem}
+            .how-step{min-width:120px;padding:1.25rem 1rem}
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO with Canvas Painted Background -->
+    <header class="home-hero">
+        <div class="hero-paint-bg">
+            <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f8fcff"/><stop offset="25%" style="stop-color:#f1f9ff"/><stop offset="50%" style="stop-color:#e8f4ff"/><stop offset="75%" style="stop-color:#dceeff"/><stop offset="100%" style="stop-color:#c7e7ff"/></linearGradient>
+                    <linearGradient id="paintStroke1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.2"/>
+                        <stop offset="100%" style="stop-color:#7dd3fc;stop-opacity:0.08"/>
+                    </linearGradient>
+                    <linearGradient id="paintStroke2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f472b6;stop-opacity:0.2"/>
+                        <stop offset="100%" style="stop-color:#fb7185;stop-opacity:0.05"/>
+                    </linearGradient>
+                    <linearGradient id="paintStroke3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.2"/>
+                        <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.05"/>
+                    </linearGradient>
+                    <filter id="paintBlur"><feGaussianBlur stdDeviation="3"/></filter>
+                </defs>
+                <!-- Base gradient -->
+                <rect width="1440" height="900" fill="url(#heroGrad)"/>
+                <!-- Painted brush strokes -->
+                <path d="M-50,200 Q300,150 700,250 T1500,200" stroke="url(#paintStroke1)" stroke-width="80" fill="none" filter="url(#paintBlur)" opacity="0.4"/>
+                <path d="M-50,400 Q400,350 800,450 T1500,400" stroke="url(#paintStroke2)" stroke-width="60" fill="none" filter="url(#paintBlur)" opacity="0.3"/>
+                <path d="M-50,600 Q350,550 750,650 T1500,600" stroke="url(#paintStroke3)" stroke-width="70" fill="none" filter="url(#paintBlur)" opacity="0.3"/>
+                <path d="M-50,100 Q200,50 500,120 T1400,80" stroke="url(#paintStroke1)" stroke-width="40" fill="none" filter="url(#paintBlur)" opacity="0.2"/>
+                <!-- Painted leaves -->
+                <ellipse cx="120" cy="180" rx="40" ry="18" fill="#0284c7" opacity="0.25" transform="rotate(-30 120 180)"/>
+                <ellipse cx="1320" cy="250" rx="35" ry="15" fill="#9fd6ff" opacity="0.3" transform="rotate(25 1320 250)"/>
+                <ellipse cx="200" cy="650" rx="45" ry="20" fill="#38bdf8" opacity="0.15" transform="rotate(-20 200 650)"/>
+                <ellipse cx="1250" cy="700" rx="38" ry="16" fill="#7dd3fc" opacity="0.2" transform="rotate(35 1250 700)"/>
+                <ellipse cx="80" cy="400" rx="30" ry="14" fill="#0284c7" opacity="0.18" transform="rotate(-40 80 400)"/>
+                <ellipse cx="1380" cy="500" rx="32" ry="14" fill="#38bdf8" opacity="0.15" transform="rotate(45 1380 500)"/>
+                <!-- Painted flower petals - top left -->
+                <g transform="translate(150,150)" opacity="0.3">
+                    <ellipse cx="0" cy="-18" rx="12" ry="18" fill="#f472b6"/>
+                    <ellipse cx="0" cy="18" rx="12" ry="18" fill="#f472b6"/>
+                    <ellipse cx="-18" cy="0" rx="18" ry="12" fill="#fb7185"/>
+                    <ellipse cx="18" cy="0" rx="18" ry="12" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="8" fill="#fbbf24"/>
+                </g>
+                <!-- Painted flower - top right -->
+                <g transform="translate(1280,200)" opacity="0.25">
+                    <ellipse cx="0" cy="-15" rx="10" ry="15" fill="#c4b5fd"/>
+                    <ellipse cx="0" cy="15" rx="10" ry="15" fill="#c4b5fd"/>
+                    <ellipse cx="-15" cy="0" rx="15" ry="10" fill="#a78bfa"/>
+                    <ellipse cx="15" cy="0" rx="15" ry="10" fill="#a78bfa"/>
+                    <circle cx="0" cy="0" r="6" fill="#fde047"/>
+                </g>
+                <!-- Painted flower - bottom left -->
+                <g transform="translate(180,700)" opacity="0.25">
+                    <ellipse cx="0" cy="-16" rx="11" ry="16" fill="#fda4af"/>
+                    <ellipse cx="0" cy="16" rx="11" ry="16" fill="#fda4af"/>
+                    <ellipse cx="-16" cy="0" rx="16" ry="11" fill="#fb7185"/>
+                    <ellipse cx="16" cy="0" rx="16" ry="11" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="7" fill="#fbbf24"/>
+                </g>
+                <!-- Painted flower - bottom right -->
+                <g transform="translate(1260,720)" opacity="0.25">
+                    <ellipse cx="0" cy="-14" rx="10" ry="14" fill="#fde047"/>
+                    <ellipse cx="0" cy="14" rx="10" ry="14" fill="#fde047"/>
+                    <ellipse cx="-14" cy="0" rx="14" ry="10" fill="#fbbf24"/>
+                    <ellipse cx="14" cy="0" rx="14" ry="10" fill="#fbbf24"/>
+                    <circle cx="0" cy="0" r="6" fill="#f97316"/>
+                </g>
+                <!-- Small painted dots/sparkles -->
+                <circle cx="300" cy="100" r="3" fill="#fde047" opacity="0.4"/>
+                <circle cx="1100" cy="300" r="2" fill="#f9a8d4" opacity="0.4"/>
+                <circle cx="500" cy="750" r="2.5" fill="#c4b5fd" opacity="0.35"/>
+                <circle cx="900" cy="150" r="2" fill="#fde047" opacity="0.3"/>
+                <circle cx="200" cy="500" r="2" fill="#fda4af" opacity="0.35"/>
+                <circle cx="1350" cy="600" r="2.5" fill="#7dd3fc" opacity="0.3"/>
+            </svg>
+        </div>
+
+        <!-- Floating Flowers -->
+        <div class="flower-float" style="top:12%;left:5%;animation-delay:0s;font-size:2.8rem;opacity:.2">🌸</div>
+        <div class="flower-float" style="top:70%;left:8%;animation-delay:1.2s;font-size:2rem;opacity:.18">🌺</div>
+        <div class="flower-float" style="top:18%;right:6%;animation-delay:2.5s;font-size:2.4rem;opacity:.2">🌼</div>
+        <div class="flower-float" style="top:65%;right:5%;animation-delay:0.8s;font-size:2.2rem;opacity:.18">🌷</div>
+        <div class="flower-float" style="top:40%;left:2%;animation-delay:3s;font-size:1.8rem;opacity:.15">🌹</div>
+        <div class="flower-float" style="bottom:15%;left:12%;animation-delay:4s;font-size:2rem;opacity:.18">🌻</div>
+        <div class="flower-float" style="top:25%;right:12%;animation-delay:1.5s;font-size:1.6rem;opacity:.2;color:#f9a8d4">🌸</div>
+        <div class="flower-float" style="bottom:20%;right:8%;animation-delay:3.5s;font-size:1.8rem;opacity:.2;color:#fde047">🌼</div>
+
+        <!-- SVG Flower Illustrations -->
+        <svg class="flower-float" style="top:8%;left:15%;width:80px;height:80px;animation-delay:0.5s" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.25">
+                <ellipse cx="40" cy="22" rx="12" ry="20" fill="#f9a8d4"/>
+                <ellipse cx="40" cy="58" rx="12" ry="20" fill="#f9a8d4"/>
+                <ellipse cx="22" cy="40" rx="20" ry="12" fill="#f472b6"/>
+                <ellipse cx="58" cy="40" rx="20" ry="12" fill="#f472b6"/>
+                <ellipse cx="27" cy="27" rx="14" ry="10" fill="#fbcfe8" transform="rotate(-45 27 27)"/>
+                <ellipse cx="53" cy="27" rx="14" ry="10" fill="#fbcfe8" transform="rotate(45 53 27)"/>
+                <ellipse cx="27" cy="53" rx="14" ry="10" fill="#fbcfe8" transform="rotate(45 27 53)"/>
+                <ellipse cx="53" cy="53" rx="14" ry="10" fill="#fbcfe8" transform="rotate(-45 53 53)"/>
+                <circle cx="40" cy="40" r="10" fill="#fbbf24"/>
+                <circle cx="40" cy="40" r="5" fill="#f59e0b"/>
+            </g>
+        </svg>
+
+        <svg class="flower-float" style="top:15%;right:18%;width:70px;height:70px;animation-delay:2s" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.25">
+                <ellipse cx="40" cy="22" rx="10" ry="18" fill="#c4b5fd"/>
+                <ellipse cx="40" cy="58" rx="10" ry="18" fill="#c4b5fd"/>
+                <ellipse cx="22" cy="40" rx="18" ry="10" fill="#a78bfa"/>
+                <ellipse cx="58" cy="40" rx="18" ry="10" fill="#a78bfa"/>
+                <circle cx="40" cy="40" r="8" fill="#fde047"/>
+                <circle cx="40" cy="40" r="4" fill="#fbbf24"/>
+            </g>
+        </svg>
+
+        <svg class="flower-float" style="bottom:12%;left:20%;width:75px;height:75px;animation-delay:3.5s" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.25">
+                <ellipse cx="40" cy="22" rx="11" ry="19" fill="#fda4af"/>
+                <ellipse cx="40" cy="58" rx="11" ry="19" fill="#fda4af"/>
+                <ellipse cx="22" cy="40" rx="19" ry="11" fill="#fb7185"/>
+                <ellipse cx="58" cy="40" rx="19" ry="11" fill="#fb7185"/>
+                <circle cx="40" cy="40" r="9" fill="#fde047"/>
+                <circle cx="40" cy="40" r="4.5" fill="#f97316"/>
+            </g>
+        </svg>
+
+        <!-- Leaf Illustrations -->
+        <svg class="leaf-sway" style="position:absolute;top:35%;left:6%;width:60px;height:60px;opacity:.15;z-index:1" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30,5 Q50,20 45,45 Q35,55 30,55 Q25,55 15,45 Q10,20 30,5Z" fill="#0ea5e9"/>
+            <path d="M30,10 L30,50" stroke="#075985" stroke-width="1.5" fill="none"/>
+            <path d="M30,20 L40,15" stroke="#075985" stroke-width="1" fill="none"/>
+            <path d="M30,30 L20,25" stroke="#075985" stroke-width="1" fill="none"/>
+            <path d="M30,40 L38,35" stroke="#075985" stroke-width="1" fill="none"/>
+        </svg>
+
+        <svg class="leaf-sway" style="position:absolute;bottom:25%;right:7%;width:55px;height:55px;opacity:.15;z-index:1;animation-delay:1s" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30,5 Q50,20 45,45 Q35,55 30,55 Q25,55 15,45 Q10,20 30,5Z" fill="#38bdf8"/>
+            <path d="M30,10 L30,50" stroke="#0284c7" stroke-width="1.5" fill="none"/>
+            <path d="M30,22 L42,16" stroke="#0284c7" stroke-width="1" fill="none"/>
+            <path d="M30,35 L18,28" stroke="#0284c7" stroke-width="1" fill="none"/>
+        </svg>
+
+        <div class="hero-content">
+            <h1 class="hero-h1">Grow Today,<br><span class="highlight">Green Tomorrow</span></h1>
+            <p class="hero-sub">Connect communities, volunteers, and nature for a greener Pakistan.</p>
+            <p class="hero-motto">"Plant Today, Protect Tomorrow"</p>
+            <div class="hero-btns">
+                <a href="request.html" class="btn btn-primary">🌱 Request a Plant</a>
+                <a href="volunteer.html" class="btn btn-secondary">🌿 Become a Volunteer</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span id="hPlants">0</span><small>Plants Planted</small></div>
+                <div class="hero-stat"><span id="hAreas">0</span><small>Areas Covered</small></div>
+                <div class="hero-stat"><span id="hVolunteers">0</span><small>Active Volunteers</small></div>
+                <div class="hero-stat"><span id="hProjects">0</span><small>Projects Completed</small></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MISSION QUOTE -->
+    <section class="paint-section home-mission">
+        <div class="paint-section-bg">
+            <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="missionGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#fffdf2"/><stop offset="50%" style="stop-color:#f4faff"/><stop offset="100%" style="stop-color:#fdf5fb"/></linearGradient>
+                    <linearGradient id="missionStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f9a8d4;stop-opacity:0.3"/>
+                        <stop offset="50%" style="stop-color:#7dd3fc;stop-opacity:0.2"/>
+                        <stop offset="100%" style="stop-color:#f9a8d4;stop-opacity:0.3"/>
+                    </linearGradient>
+                </defs>
+                <rect width="1440" height="400" fill="url(#missionGrad)"/>
+                <path d="M0,80 Q360,40 720,100 T1440,60" stroke="url(#missionStroke)" stroke-width="40" fill="none" opacity="0.4"/>
+                <path d="M0,200 Q360,160 720,220 T1440,180" stroke="url(#missionStroke)" stroke-width="30" fill="none" opacity="0.3"/>
+                <path d="M0,320 Q360,280 720,340 T1440,300" stroke="url(#missionStroke)" stroke-width="35" fill="none" opacity="0.35"/>
+                <!-- Painted flowers -->
+                <g transform="translate(80,60)" opacity="0.2">
+                    <ellipse cx="0" cy="-12" rx="8" ry="12" fill="#f472b6"/>
+                    <ellipse cx="0" cy="12" rx="8" ry="12" fill="#f472b6"/>
+                    <ellipse cx="-12" cy="0" rx="12" ry="8" fill="#fb7185"/>
+                    <ellipse cx="12" cy="0" rx="12" ry="8" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="5" fill="#fbbf24"/>
+                </g>
+                <g transform="translate(1360,80)" opacity="0.2">
+                    <ellipse cx="0" cy="-10" rx="7" ry="10" fill="#c4b5fd"/>
+                    <ellipse cx="0" cy="10" rx="7" ry="10" fill="#c4b5fd"/>
+                    <ellipse cx="-10" cy="0" rx="10" ry="7" fill="#a78bfa"/>
+                    <ellipse cx="10" cy="0" rx="10" ry="7" fill="#a78bfa"/>
+                    <circle cx="0" cy="0" r="4" fill="#fde047"/>
+                </g>
+                <g transform="translate(120,340)" opacity="0.18">
+                    <ellipse cx="0" cy="-11" rx="8" ry="11" fill="#fda4af"/>
+                    <ellipse cx="0" cy="11" rx="8" ry="11" fill="#fda4af"/>
+                    <ellipse cx="-11" cy="0" rx="11" ry="8" fill="#fb7185"/>
+                    <ellipse cx="11" cy="0" rx="11" ry="8" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="5" fill="#fbbf24"/>
+                </g>
+                <g transform="translate(1320,330)" opacity="0.18">
+                    <ellipse cx="0" cy="-10" rx="7" ry="10" fill="#fde047"/>
+                    <ellipse cx="0" cy="10" rx="7" ry="10" fill="#fde047"/>
+                    <ellipse cx="-10" cy="0" rx="10" ry="7" fill="#fbbf24"/>
+                    <ellipse cx="10" cy="0" rx="10" ry="7" fill="#fbbf24"/>
+                    <circle cx="0" cy="0" r="4" fill="#f97316"/>
+                </g>
+            </svg>
+        </div>
+        <div class="paint-section-content mission-box">
+            <div class="mission-icon">🌍</div>
+            <div class="mission-divider"></div>
+            <p class="mission-quote">"Plant Today, Protect Tomorrow. Every tree we plant creates a greener, healthier Pakistan for generations to come."</p>
+            <div class="mission-divider"></div>
+            <p class="mission-author">— Green Pakistan Mission</p>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="paint-section home-how">
+        <div class="paint-section-bg">
+            <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="howGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#fbfdff"/>
+                        <stop offset="50%" style="stop-color:#fefce8"/>
+                        <stop offset="100%" style="stop-color:#fbfdff"/>
+                    </linearGradient>
+                </defs>
+                <rect width="1440" height="600" fill="url(#howGrad)"/>
+                <!-- Decorative leaves -->
+                <g opacity="0.08">
+                    <path d="M100,100 Q120,80 140,100 Q120,120 100,100Z" fill="#38bdf8"/>
+                    <path d="M1300,150 Q1320,130 1340,150 Q1320,170 1300,150Z" fill="#0284c7"/>
+                    <path d="M200,500 Q220,480 240,500 Q220,520 200,500Z" fill="#7dd3fc"/>
+                    <path d="M1200,480 Q1220,460 1240,480 Q1220,500 1200,480Z" fill="#38bdf8"/>
+                </g>
+            </svg>
+        </div>
+        <div class="paint-section-content">
+            <div class="section-title">
+                <h2>🌿 How It Works</h2>
+                <p>Simple steps to make Pakistan greener</p>
+            </div>
+            <div class="how-flow">
+                <div class="how-step">
+                    <div class="how-step-num">1</div>
+                    <span class="how-step-icon">📋</span>
+                    <h4>Request</h4>
+                    <p>Submit a plantation request</p>
+                </div>
+                <div class="how-arrow">→</div>
+                <div class="how-step">
+                    <div class="how-step-num">2</div>
+                    <span class="how-step-icon">🔍</span>
+                    <h4>Verify</h4>
+                    <p>Location is reviewed</p>
+                </div>
+                <div class="how-arrow">→</div>
+                <div class="how-step">
+                    <div class="how-step-num">3</div>
+                    <span class="how-step-icon">👥</span>
+                    <h4>Assign</h4>
+                    <p>Volunteers are matched</p>
+                </div>
+                <div class="how-arrow">→</div>
+                <div class="how-step">
+                    <div class="how-step-num">4</div>
+                    <span class="how-step-icon">🌱</span>
+                    <h4>Plant</h4>
+                    <p>Plantation takes place</p>
+                </div>
+                <div class="how-arrow">→</div>
+                <div class="how-step">
+                    <div class="how-step-num">5</div>
+                    <span class="how-step-icon">📊</span>
+                    <h4>Track</h4>
+                    <p>Monitor plant health</p>
+                </div>
+                <div class="how-arrow">→</div>
+                <div class="how-step">
+                    <div class="how-step-num">6</div>
+                    <span class="how-step-icon">🏆</span>
+                    <h4>Impact</h4>
+                    <p>Earn certificates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="paint-section home-features">
+        <div class="paint-section-bg">
+            <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="featGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#fff"/>
+                        <stop offset="50%" style="stop-color:#fce7f3"/>
+                        <stop offset="100%" style="stop-color:#fff"/>
+                    </linearGradient>
+                </defs>
+                <rect width="1440" height="500" fill="url(#featGrad)"/>
+                <!-- Painted flower corners -->
+                <g transform="translate(100,80)" opacity="0.12">
+                    <ellipse cx="0" cy="-15" rx="10" ry="15" fill="#f472b6"/>
+                    <ellipse cx="0" cy="15" rx="10" ry="15" fill="#f472b6"/>
+                    <ellipse cx="-15" cy="0" rx="15" ry="10" fill="#fb7185"/>
+                    <ellipse cx="15" cy="0" rx="15" ry="10" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="6" fill="#fbbf24"/>
+                </g>
+                <g transform="translate(1340,100)" opacity="0.12">
+                    <ellipse cx="0" cy="-12" rx="8" ry="12" fill="#c4b5fd"/>
+                    <ellipse cx="0" cy="12" rx="8" ry="12" fill="#c4b5fd"/>
+                    <ellipse cx="-12" cy="0" rx="12" ry="8" fill="#a78bfa"/>
+                    <ellipse cx="12" cy="0" rx="12" ry="8" fill="#a78bfa"/>
+                    <circle cx="0" cy="0" r="5" fill="#fde047"/>
+                </g>
+                <g transform="translate(150,420)" opacity="0.1">
+                    <ellipse cx="0" cy="-10" rx="7" ry="10" fill="#fda4af"/>
+                    <ellipse cx="0" cy="10" rx="7" ry="10" fill="#fda4af"/>
+                    <ellipse cx="-10" cy="0" rx="10" ry="7" fill="#fb7185"/>
+                    <ellipse cx="10" cy="0" rx="10" ry="7" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="4" fill="#fbbf24"/>
+                </g>
+                <g transform="translate(1300,430)" opacity="0.1">
+                    <ellipse cx="0" cy="-10" rx="7" ry="10" fill="#fde047"/>
+                    <ellipse cx="0" cy="10" rx="7" ry="10" fill="#fde047"/>
+                    <ellipse cx="-10" cy="0" rx="10" ry="7" fill="#fbbf24"/>
+                    <ellipse cx="10" cy="0" rx="10" ry="7" fill="#fbbf24"/>
+                    <circle cx="0" cy="0" r="4" fill="#f97316"/>
+                </g>
+            </svg>
+        </div>
+        <div class="paint-section-content">
+            <div class="section-title">
+                <h2>🌍 Why Choose Us</h2>
+                <p>Making plantation organized, trackable, and impactful</p>
+            </div>
+            <div class="features-showcase">
+                <div class="feature-showcase-card">
+                    <div class="feature-showcase-icon">🤝</div>
+                    <h4>Community Driven</h4>
+                    <p>Connect with local communities for grassroots environmental impact across Pakistan.</p>
+                </div>
+                <div class="feature-showcase-card">
+                    <div class="feature-showcase-icon">📱</div>
+                    <h4>Track & Monitor</h4>
+                    <p>Every plant is tracked from seedling to maturity, ensuring long-term survival and growth.</p>
+                </div>
+                <div class="feature-showcase-card">
+                    <div class="feature-showcase-icon">🎯</div>
+                    <h4>Strategic Planting</h4>
+                    <p>We identify areas most in need and organize targeted plantation drives for maximum impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED AREAS -->
+    <section class="paint-section home-areas">
+        <div class="paint-section-bg">
+            <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#fbfdff"/>
+                        <stop offset="100%" style="stop-color:#fff"/>
+                    </linearGradient>
+                </defs>
+                <rect width="1440" height="500" fill="url(#areaGrad)"/>
+                <g opacity="0.07">
+                    <path d="M80,80 Q100,60 120,80 Q100,100 80,80Z" fill="#38bdf8"/>
+                    <path d="M1320,100 Q1340,80 1360,100 Q1340,120 1320,100Z" fill="#0284c7"/>
+                    <path d="M150,420 Q170,400 190,420 Q170,440 150,420Z" fill="#7dd3fc"/>
+                    <path d="M1250,400 Q1270,380 1290,400 Q1270,420 1250,400Z" fill="#38bdf8"/>
+                </g>
+            </svg>
+        </div>
+        <div class="paint-section-content">
+            <div class="section-title">
+                <h2>📍 Featured Areas</h2>
+                <p>Where plantation activities are making a difference</p>
+            </div>
+            <div class="areas-grid" id="featuredAreas"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="home-cta">
+        <div class="cta-paint-bg">
+            <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="ctaGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f8fcff"/><stop offset="50%" style="stop-color:#f1f9ff"/><stop offset="100%" style="stop-color:#e8f4ff"/></linearGradient>
+                    <linearGradient id="ctaStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#f9a8d4;stop-opacity:0.25"/>
+                        <stop offset="50%" style="stop-color:#fde047;stop-opacity:0.2"/>
+                        <stop offset="100%" style="stop-color:#7dd3fc;stop-opacity:0.25"/>
+                    </linearGradient>
+                </defs>
+                <rect width="1440" height="400" fill="url(#ctaGrad)"/>
+                <path d="M0,60 Q360,20 720,80 T1440,40" stroke="url(#ctaStroke)" stroke-width="30" fill="none" opacity="0.4"/>
+                <path d="M0,200 Q360,160 720,220 T1440,180" stroke="url(#ctaStroke)" stroke-width="25" fill="none" opacity="0.3"/>
+                <path d="M0,340 Q360,300 720,360 T1440,320" stroke="url(#ctaStroke)" stroke-width="28" fill="none" opacity="0.35"/>
+                <!-- Painted flowers -->
+                <g transform="translate(80,60)" opacity="0.2">
+                    <ellipse cx="0" cy="-14" rx="9" ry="14" fill="#f472b6"/>
+                    <ellipse cx="0" cy="14" rx="9" ry="14" fill="#f472b6"/>
+                    <ellipse cx="-14" cy="0" rx="14" ry="9" fill="#fb7185"/>
+                    <ellipse cx="14" cy="0" rx="14" ry="9" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="6" fill="#fbbf24"/>
+                </g>
+                <g transform="translate(1360,80)" opacity="0.2">
+                    <ellipse cx="0" cy="-12" rx="8" ry="12" fill="#fde047"/>
+                    <ellipse cx="0" cy="12" rx="8" ry="12" fill="#fde047"/>
+                    <ellipse cx="-12" cy="0" rx="12" ry="8" fill="#fbbf24"/>
+                    <ellipse cx="12" cy="0" rx="12" ry="8" fill="#fbbf24"/>
+                    <circle cx="0" cy="0" r="5" fill="#f97316"/>
+                </g>
+                <g transform="translate(120,340)" opacity="0.18">
+                    <ellipse cx="0" cy="-11" rx="8" ry="11" fill="#c4b5fd"/>
+                    <ellipse cx="0" cy="11" rx="8" ry="11" fill="#c4b5fd"/>
+                    <ellipse cx="-11" cy="0" rx="11" ry="8" fill="#a78bfa"/>
+                    <ellipse cx="11" cy="0" rx="11" ry="8" fill="#a78bfa"/>
+                    <circle cx="0" cy="0" r="5" fill="#fde047"/>
+                </g>
+                <g transform="translate(1320,330)" opacity="0.18">
+                    <ellipse cx="0" cy="-10" rx="7" ry="10" fill="#fda4af"/>
+                    <ellipse cx="0" cy="10" rx="7" ry="10" fill="#fda4af"/>
+                    <ellipse cx="-10" cy="0" rx="10" ry="7" fill="#fb7185"/>
+                    <ellipse cx="10" cy="0" rx="10" ry="7" fill="#fb7185"/>
+                    <circle cx="0" cy="0" r="4" fill="#fbbf24"/>
+                </g>
+            </svg>
+        </div>
+        <h2>🌿 Be Part of a Greener Pakistan</h2>
+        <p>Every tree counts. Join thousands of Pakistanis taking action for a cleaner, greener, and healthier future.</p>
+        <div class="cta-btns">
+            <a href="request.html" class="btn-gold">🌱 Request a Plant</a>
+            <a href="volunteer.html" class="btn-outline-white">🌿 Join as a Volunteer</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="impact.html">Impact</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

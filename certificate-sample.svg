@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" width="500" height="360">
+  <defs>
+    <linearGradient id="frame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7dd3fc"/>
+      <stop offset="50%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#7cc8ff"/>
+    </linearGradient>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fffef5"/>
+      <stop offset="30%" style="stop-color:#fefce8"/>
+      <stop offset="60%" style="stop-color:#fffef5"/>
+      <stop offset="100%" style="stop-color:#fef9c3"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:transparent"/>
+      <stop offset="50%" style="stop-color:#92400e"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Green Frame -->
+  <rect width="500" height="360" fill="url(#frame)" rx="8"/>
+  
+  <!-- Cream Background -->
+  <rect x="10" y="10" width="480" height="340" fill="url(#bg)" rx="4"/>
+  
+  <!-- Gold Border -->
+  <rect x="14" y="14" width="472" height="332" fill="none" stroke="#92400e" stroke-width="2" rx="2"/>
+  
+  <!-- Inner Border -->
+  <rect x="20" y="20" width="460" height="320" fill="none" stroke="#d97706" stroke-width="1" rx="2"/>
+  
+  <!-- Corner Decorations -->
+  <circle cx="30" cy="30" r="4" fill="#92400e"/>
+  <circle cx="470" cy="30" r="4" fill="#92400e"/>
+  <circle cx="30" cy="330" r="4" fill="#92400e"/>
+  <circle cx="470" cy="330" r="4" fill="#92400e"/>
+  
+  <!-- Tree Icon -->
+  <rect x="247" y="28" width="6" height="14" fill="#38bdf8"/>
+  <polygon points="250,18 264,32 236,32" fill="#38bdf8"/>
+  
+  <!-- Logo -->
+  <text x="460" y="40" font-size="20" fill="#38bdf8">🌱</text>
+  
+  <!-- Org Name -->
+  <text x="250" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#92400e" letter-spacing="3">GREEN PAKISTAN</text>
+  
+  <!-- Title -->
+  <text x="250" y="82" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#78350f">Certificate of</text>
+  <text x="250" y="102" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="#78350f">Environmental Contribution</text>
+  
+  <!-- Decorative Line -->
+  <line x1="120" y1="115" x2="380" y2="115" stroke="url(#gold)" stroke-width="1"/>
+  
+  <!-- Awarded To -->
+  <text x="250" y="135" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#92400e" letter-spacing="1">THIS IS TO CERTIFY THAT</text>
+  
+  <!-- Volunteer Name -->
+  <text x="250" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#78350f">MARIA SAAD</text>
+  
+  <!-- Has Completed -->
+  <text x="250" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#92400e">has successfully completed the plantation task</text>
+  
+  <!-- Task Name -->
+  <text x="250" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" font-style="italic" fill="#78350f">"F-9 Park Tree Plantation Drive"</text>
+  
+  <!-- Stats -->
+  <text x="250" y="228" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#92400e">
+    <tspan>🌱 15 Plants</tspan>
+    <tspan dx="20">📍 F-9 Park, Islamabad</tspan>
+    <tspan dx="20">📅 Jan 15, 2026</tspan>
+  </text>
+  
+  <!-- Bottom Line -->
+  <line x1="120" y1="245" x2="380" y2="245" stroke="url(#gold)" stroke-width="1"/>
+  
+  <!-- Left Signature -->
+  <line x1="60" y1="310" x2="160" y2="310" stroke="#92400e" stroke-width="1"/>
+  <text x="110" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="#92400e">Admin / Organizer</text>
+  <text x="110" y="338" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#92400e">Authorized Signature</text>
+  
+  <!-- Seal -->
+  <circle cx="250" cy="305" r="22" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <text x="250" y="312" text-anchor="middle" font-size="22">✅</text>
+  
+  <!-- Right Signature -->
+  <line x1="340" y1="310" x2="440" y2="310" stroke="#92400e" stroke-width="1"/>
+  <text x="390" y="325" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="#92400e">Green Pakistan</text>
+  <text x="390" y="338" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#92400e">Platform</text>
+  
+  <!-- Certificate ID -->
+  <text x="250" y="352" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#92400e" letter-spacing="1">ID: CERT-ABC123</text>
+</svg>

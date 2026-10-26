@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <h2>📊 Dashboard</h2>
+            <p class="section-subtitle">Welcome back! Here's your activity overview.</p>
+
+            <!-- Not logged in -->
+            <div id="dashNotLoggedIn">
+                <div class="auth-container">
+                    <div class="auth-card" style="max-width:500px">
+                        <div class="auth-header">
+                            <span class="auth-icon">📊</span>
+                            <h2>Welcome to Dashboard</h2>
+                            <p>Sign in to view your personalized dashboard</p>
+                        </div>
+                        <div style="text-align:center;padding:1rem 0">
+                            <a href="signin.html" class="btn btn-primary" style="margin:.5rem">🔐 Sign In</a>
+                            <a href="register.html" class="btn btn-outline" style="margin:.5rem">📝 Create Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logged in -->
+            <div id="dashLoggedIn" class="hidden">
+                <div class="dash-welcome" id="dashWelcome">
+                    <h3>Welcome!</h3>
+                </div>
+
+                <!-- Dashboard Tabs -->
+                <div class="dash-tabs" id="dashTabs">
+                    <!-- Volunteer Tabs -->
+                    <div id="volDashTabs" class="hidden">
+                        <button class="dash-tab active" data-tab="vtab-tasks">📋 Available Tasks</button>
+                        <button class="dash-tab" data-tab="vtab-mytasks">🌳 My Tasks</button>
+                        <button class="dash-tab" data-tab="vtab-impact">🏆 My Impact</button>
+                        <button class="dash-tab" data-tab="vtab-certs">📜 My Certificates</button>
+                        <button class="dash-tab" data-tab="vtab-profile">👤 Profile</button>
+                    </div>
+                    <!-- Customer Tabs -->
+                    <div id="custDashTabs" class="hidden">
+                        <button class="dash-tab active" data-tab="ctab-request">🌱 Request a Plant</button>
+                        <button class="dash-tab" data-tab="ctab-myrequests">📋 My Requests</button>
+                        <button class="dash-tab" data-tab="ctab-status">📍 Request Status</button>
+                        <button class="dash-tab" data-tab="ctab-profile">👤 Profile</button>
+                    </div>
+                </div>
+
+                <!-- Volunteer Dashboard Content -->
+                <div id="vtab-tasks" class="dash-tab-content active">
+                    <h3>🌳 Available Plantation Tasks</h3>
+                    <div id="dashTasks" class="task-list"></div>
+                </div>
+                <div id="vtab-mytasks" class="dash-tab-content">
+                    <h3>🌳 My Tasks</h3>
+                    <div id="dashMyTasks" class="task-list"></div>
+                </div>
+                <div id="vtab-impact" class="dash-tab-content">
+                    <h3>🏆 My Impact</h3>
+                    <div class="dash-stats" id="dashVolStats"></div>
+                </div>
+                <div id="vtab-certs" class="dash-tab-content">
+                    <h3>📜 My Certificates</h3>
+                    <div id="dashCerts" class="task-list"></div>
+                    <div id="dashCertsPreview"></div>
+                    <div class="cert-sample-preview" style="margin-top:1.5rem">
+                        <img src="certificate-sample.svg" alt="Certificate Preview" style="width:100%;max-width:500px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.15);display:block;margin:0 auto">
+                    </div>
+                </div>
+                <div id="vtab-profile" class="dash-tab-content">
+                    <h3>👤 My Profile</h3>
+                    <div id="dashVolProfile"></div>
+                </div>
+
+                <!-- Customer Dashboard Content -->
+                <div id="ctab-request" class="dash-tab-content">
+                    <h3>🌱 Request a Plant</h3>
+                    <p style="margin-bottom:1rem;color:var(--g600)">Fill out the form below to request plants for your area.</p>
+                    <a href="request.html" class="btn btn-primary">🌱 Go to Request Form</a>
+                </div>
+                <div id="ctab-myrequests" class="dash-tab-content">
+                    <h3>📋 My Requests</h3>
+                    <div id="dashMyRequests" class="task-list"></div>
+                </div>
+                <div id="ctab-status" class="dash-tab-content">
+                    <h3>📍 Request Status</h3>
+                    <div id="dashRequestStatus" class="dash-status-list"></div>
+                </div>
+                <div id="ctab-profile" class="dash-tab-content">
+                    <h3>👤 My Profile</h3>
+                    <div id="dashCustProfile"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

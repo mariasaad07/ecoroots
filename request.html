@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Request a Plant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html" class="active">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <h2>🌱 Request a Plant</h2>
+            <p class="section-subtitle">Want trees or plants in your area? Submit a request and we'll connect you with volunteers.</p>
+
+            <form id="requestForm" class="platform-form">
+                <div class="form-row">
+                    <div class="form-group"><label>Full Name *</label><input type="text" id="reqName" placeholder="Your full name" required></div>
+                    <div class="form-group"><label>Contact Number *</label><input type="tel" id="reqPhone" placeholder="03XX-XXXXXXX" required></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Email (optional)</label><input type="email" id="reqEmail" placeholder="you@email.com"></div>
+                    <div class="form-group"><label>City *</label>
+                        <select id="reqCity" required><option value="">Select city</option><option>Islamabad</option><option>Rawalpindi</option><option>Lahore</option><option>Karachi</option><option>Peshawar</option><option>Quetta</option><option>Multan</option><option>Faisalabad</option><option>Other</option></select>
+                    </div>
+                </div>
+                <div class="form-group"><label>Area / Sector *</label><input type="text" id="reqArea" placeholder="e.g. F-9, DHA, Gulberg" required></div>
+                <div class="form-group"><label>Exact Location / Address *</label><input type="text" id="reqLocation" placeholder="Street, landmark, or GPS coordinates" required></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Plant Type *</label>
+                        <select id="reqPlantType" required><option value="">Select type</option><option value="tree">🌳 Tree</option><option value="fruit">🍎 Fruit Tree</option><option value="flower">🌸 Flower</option><option value="shrub">🌿 Shrub</option><option value="herb">🌱 Herb</option><option value="any">🎲 Any Suitable</option></select>
+                    </div>
+                    <div class="form-group"><label>Specific Plant Name (optional)</label><input type="text" id="reqPlantName" placeholder="e.g. Neem, Mango, Rose"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Number of Plants *</label><input type="number" id="reqQuantity" min="1" max="1000" placeholder="e.g. 10" required></div>
+                    <div class="form-group"><label>Preferred Date (optional)</label><input type="date" id="reqDate"></div>
+                </div>
+                <div class="form-group"><label>Reason / Description *</label><textarea id="reqReason" rows="3" placeholder="Why do you want plants here?" required></textarea></div>
+                <div class="form-group"><label>Additional Details (optional)</label><textarea id="reqDetails" rows="2" placeholder="Any other information..."></textarea></div>
+                <button type="submit" class="btn btn-primary btn-full">🌱 Submit Plantation Request</button>
+            </form>
+
+            <div id="requestSuccess" class="confirmation hidden">
+                <span class="confirmation-icon">✅</span>
+                <h3>Request Submitted Successfully!</h3>
+                <p>Your Request ID: <strong id="newReqId"></strong></p>
+                <p>Track your request status from the <a href="dashboard.html">Dashboard</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="request.js"></script>
+</body>
+</html>

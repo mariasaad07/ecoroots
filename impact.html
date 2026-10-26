@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Impact</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .impact-hero{position:relative;background:linear-gradient(135deg,#f8fcff 0%,#f1f9ff 40%,#e8f4ff 100%);padding:6rem 2rem 5rem;text-align:center;overflow:hidden}
+        .impact-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='%23ffffff08'/%3E%3Ccircle cx='80' cy='40' r='1' fill='%23ffffff06'/%3E%3Ccircle cx='50' cy='80' r='1.2' fill='%23ffffff05'/%3E%3C/svg%3E");opacity:.5}
+        .impact-hero::after{content:'🌸 🌺 🌼 🌷 🌹 🌻 🌸 🌺 🌼';position:absolute;bottom:0;left:0;right:0;font-size:1.5rem;opacity:.1;pointer-events:none;text-align:center;letter-spacing:1.5rem}
+        .impact-hero-content{position:relative;z-index:2}
+        .impact-hero h1{font-size:2.8rem;color:var(--g900,#0c4a6e);margin-bottom:.5rem;font-weight:800}
+        .impact-hero .hero-sub{font-size:1.15rem;color:var(--g700,#0369a1);max-width:650px;margin:0 auto 2rem;line-height:1.7}
+        .leaf-float{position:absolute;font-size:2rem;opacity:.15;animation:floatLeaf 8s ease-in-out infinite;pointer-events:none}
+        .leaf-float:nth-child(1){top:10%;left:5%;animation-delay:0s}
+        .leaf-float:nth-child(2){top:60%;left:8%;animation-delay:2s;font-size:1.5rem}
+        .leaf-float:nth-child(3){top:20%;right:5%;animation-delay:4s}
+        .leaf-float:nth-child(4){top:70%;right:10%;animation-delay:1s;font-size:1.8rem}
+        .leaf-float:nth-child(5){top:40%;left:3%;animation-delay:3s;font-size:1.3rem}
+        .leaf-float:nth-child(6){bottom:10%;left:15%;animation-delay:5s;font-size:1.6rem}
+        .leaf-float:nth-child(7){bottom:20%;right:15%;animation-delay:1.5s;font-size:1.4rem}
+        @keyframes floatLeaf{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-15px) rotate(10deg)}}
+
+        .impact-motivation{background:linear-gradient(135deg,#fbfdff 0%,#f4faff 50%,#fdf5fb 100%);padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .impact-motivation::before{content:'🌸 🌺 🌼';position:absolute;top:20px;left:40px;font-size:2.5rem;opacity:.1;animation:sway 5s ease-in-out infinite}
+        .impact-motivation::after{content:'🌷 🌹 🌻';position:absolute;bottom:20px;right:40px;font-size:2.5rem;opacity:.1;animation:sway 5s ease-in-out infinite reverse}
+        .motivation-box{max-width:700px;margin:0 auto;position:relative;z-index:2}
+        .motivation-icon{font-size:3rem;margin-bottom:1rem}
+        .motivation-quote{font-size:1.2rem;color:var(--g800);font-style:italic;line-height:1.8;font-family:Georgia,serif;margin-bottom:1rem}
+        .motivation-author{font-size:.85rem;color:var(--g600);letter-spacing:1px;text-transform:uppercase}
+        .motivation-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--g400),var(--g600));margin:1rem auto;border-radius:2px}
+
+        .impact-stats-section{padding:5rem 2rem;background:#fff}
+        .impact-stats-section .section-title{text-align:center;margin-bottom:3rem}
+        .impact-stats-section .section-title h2{font-size:2rem;color:var(--g800);margin-bottom:.5rem}
+        .impact-stats-section .section-title p{color:var(--g600);font-size:1rem}
+        .stat-cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1000px;margin:0 auto}
+        .stat-card{background:linear-gradient(135deg,#fbfdff,#f4faff);border-radius:16px;padding:2rem 1.5rem;text-align:center;border:1px solid var(--g200);transition:all .3s ease;position:relative;overflow:hidden}
+        .stat-card::before{content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;background:var(--g200);border-radius:50%;opacity:.3}
+        .stat-card:hover{transform:translateY(-5px);box-shadow:0 12px 30px rgba(2,132,199,.12)}
+        .stat-card-icon{font-size:2.5rem;margin-bottom:.75rem;display:block}
+        .stat-card-num{font-size:2.5rem;font-weight:800;color:var(--g700);display:block;line-height:1}
+        .stat-card-label{font-size:.85rem;color:var(--g600);margin-top:.5rem;display:block;text-transform:uppercase;letter-spacing:1px}
+        .stat-card-bar{width:100%;height:4px;background:var(--g200);border-radius:2px;margin-top:1rem;overflow:hidden}
+        .stat-card-bar-fill{height:100%;background:linear-gradient(90deg,var(--g500),var(--g700));border-radius:2px;transition:width 1.5s ease}
+
+        .impact-features{padding:5rem 2rem;background:linear-gradient(180deg,#fbfdff 0%,#fbfdff 100%)}
+        .impact-features .section-title{text-align:center;margin-bottom:3rem}
+        .impact-features .section-title h2{font-size:2rem;color:var(--g800);margin-bottom:.5rem}
+        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+        .feature-card{background:#fff;border-radius:16px;padding:2rem;text-align:center;border:1px solid var(--g200);transition:all .3s ease}
+        .feature-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.08)}
+        .feature-icon{width:70px;height:70px;background:linear-gradient(135deg,#f1f9ff,#e8f4ff);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem}
+        .feature-card h4{color:var(--g800);margin-bottom:.5rem;font-size:1.1rem}
+        .feature-card p{color:var(--g600);font-size:.9rem;line-height:1.6}
+
+        .impact-charts{padding:5rem 2rem;background:#fff}
+        .impact-charts .section-title{text-align:center;margin-bottom:3rem}
+        .impact-charts .section-title h2{font-size:2rem;color:var(--g800);margin-bottom:.5rem}
+        .charts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+        .chart-card{background:linear-gradient(135deg,#fbfdff,#f4faff);border-radius:16px;padding:2rem;border:1px solid var(--g200)}
+        .chart-card h4{color:var(--g800);margin-bottom:1.5rem;font-size:1.1rem;text-align:center}
+
+        .impact-timeline{padding:5rem 2rem;background:linear-gradient(180deg,#fbfdff 0%,#fff 100%)}
+        .impact-timeline .section-title{text-align:center;margin-bottom:3rem}
+        .impact-timeline .section-title h2{font-size:2rem;color:var(--g800);margin-bottom:.5rem}
+        .timeline-container{max-width:700px;margin:0 auto;position:relative}
+        .timeline-line{position:absolute;left:24px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--g400),var(--g600),var(--g400))}
+        .timeline-item{display:flex;gap:1.5rem;margin-bottom:2rem;position:relative}
+        .timeline-dot{width:50px;height:50px;min-width:50px;background:linear-gradient(135deg,var(--g600),var(--g700));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;font-weight:700;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:2}
+        .timeline-content{background:#fff;border-radius:12px;padding:1.25rem 1.5rem;border:1px solid var(--g200);flex:1}
+        .timeline-content h4{color:var(--g700);margin-bottom:.25rem}
+        .timeline-content p{color:var(--g600);font-size:.9rem;line-height:1.6}
+        .timeline-item.future .timeline-dot{background:linear-gradient(135deg,#f59e0b,#d97706)}
+        .timeline-item.future .timeline-content{border-color:#f59e0b;background:linear-gradient(135deg,#fffbeb,#fef3c7)}
+
+        .impact-goal{padding:5rem 2rem;background:#fff;text-align:center}
+        .goal-container{max-width:600px;margin:0 auto}
+        .goal-container h2{font-size:2rem;color:var(--g800);margin-bottom:.5rem}
+        .goal-container>p{color:var(--g600);margin-bottom:2rem}
+        .goal-ring{width:200px;height:200px;margin:0 auto 2rem;position:relative}
+        .goal-ring svg{transform:rotate(-90deg)}
+        .goal-ring-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+        .goal-ring-num{font-size:2rem;font-weight:800;color:var(--g700);display:block}
+        .goal-ring-label{font-size:.75rem;color:var(--g600);text-transform:uppercase;letter-spacing:1px}
+        .goal-bar-wrap{background:var(--g200);border-radius:12px;height:16px;overflow:hidden;margin-bottom:.75rem}
+        .goal-bar-fill{height:100%;background:linear-gradient(90deg,var(--g400),var(--g600),var(--g700));border-radius:12px;transition:width 2s ease}
+        .goal-text{color:var(--g600);font-size:.9rem}
+
+        .impact-cta{padding:5rem 2rem;background:linear-gradient(135deg,#f8fcff 0%,#f1f9ff 50%,#e8f4ff 100%);text-align:center;position:relative;overflow:hidden}
+        .impact-cta::before{content:'🌿';position:absolute;top:10px;left:10%;font-size:3rem;opacity:.1;transform:rotate(-20deg)}
+        .impact-cta::after{content:'🌳';position:absolute;bottom:10px;right:10%;font-size:3rem;opacity:.1;transform:rotate(20deg)}
+        .impact-cta h2{color:var(--g900,#0c4a6e);font-size:2rem;margin-bottom:1rem;position:relative;z-index:2}
+        .impact-cta p{color:var(--g700,#0369a1);max-width:500px;margin:0 auto 2rem;position:relative;z-index:2;line-height:1.7}
+        .impact-cta .cta-buttons{display:flex;gap:1rem;justify-content:center;position:relative;z-index:2}
+        .impact-cta .btn-white{background:#fff;color:var(--g700);padding:.875rem 2rem;border-radius:var(--rs);text-decoration:none;font-weight:600;border:2px solid #fff;transition:all .3s;box-shadow:0 4px 14px rgba(2,132,199,.15)}
+        .impact-cta .btn-white:hover{background:var(--g50);color:var(--g800)}
+        .impact-cta .btn-outline-white{background:transparent;color:var(--g700,#0369a1);padding:.875rem 2rem;border-radius:var(--rs);text-decoration:none;font-weight:600;border:2px solid rgba(3,105,161,.4);transition:all .3s}
+        .impact-cta .btn-outline-white:hover{background:rgba(255,255,255,.5);border-color:var(--g600,#0284c7)}
+
+        @media(max-width:768px){
+            .stat-cards-grid{grid-template-columns:repeat(2,1fr)}
+            .features-grid{grid-template-columns:1fr}
+            .charts-grid{grid-template-columns:1fr}
+            .impact-hero h1{font-size:2rem}
+            .impact-cta .cta-buttons{flex-direction:column;align-items:center}
+        }
+        @media(max-width:480px){
+            .stat-cards-grid{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html" class="active">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="impact-hero">
+        <div class="leaf-float">🌸</div>
+        <div class="leaf-float">🌺</div>
+        <div class="leaf-float">🌼</div>
+        <div class="leaf-float">🍃</div>
+        <div class="leaf-float">🌿</div>
+        <div class="leaf-float">🌷</div>
+        <div class="leaf-float">🌹</div>
+        <div class="impact-hero-content">
+            <h1>🌍 Our Environmental Impact</h1>
+            <p class="hero-sub">Together, we are building a greener, healthier Pakistan — one tree at a time. See how our community of volunteers and nature lovers is making a real difference.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                <a href="volunteer.html" class="btn btn-primary">🌿 Join as Volunteer</a>
+                <a href="request.html" class="btn btn-outline" style="color:var(--g700,#0369a1);border-color:var(--g300)">🌱 Request a Plant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivational Quote -->
+    <section class="impact-motivation">
+        <div class="motivation-box">
+            <div class="motivation-icon">🌍</div>
+            <div class="motivation-divider"></div>
+            <p class="motivation-quote">"Every tree we plant today creates a greener and healthier tomorrow. Together, our small actions can make a big difference for Pakistan."</p>
+            <div class="motivation-divider"></div>
+            <p class="motivation-author">— Green Pakistan Mission</p>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="impact-stats-section" style="position:relative">
+        <div style="position:absolute;top:10px;left:30px;font-size:2rem;opacity:.06;pointer-events:none">🌸 🌺 🌼</div>
+        <div style="position:absolute;bottom:10px;right:30px;font-size:2rem;opacity:.06;pointer-events:none">🌷 🌹 🌻</div>
+        <div class="section-title">
+            <h2>📊 Our Numbers Speak</h2>
+            <p>Real-time statistics of our community's environmental contribution</p>
+        </div>
+        <div class="stat-cards-grid">
+            <div class="stat-card">
+                <span class="stat-card-icon">🌳</span>
+                <span class="stat-card-num" id="statPlants">0</span>
+                <span class="stat-card-label">Trees Planted</span>
+                <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width:0%" id="barPlants"></div></div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-card-icon">👥</span>
+                <span class="stat-card-num" id="statVolunteers">0</span>
+                <span class="stat-card-label">Active Volunteers</span>
+                <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width:0%" id="barVolunteers"></div></div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-card-icon">📍</span>
+                <span class="stat-card-num" id="statAreas">0</span>
+                <span class="stat-card-label">Areas Covered</span>
+                <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width:0%" id="barAreas"></div></div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-card-icon">🏆</span>
+                <span class="stat-card-num" id="statCompleted">0</span>
+                <span class="stat-card-label">Projects Completed</span>
+                <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width:0%" id="barCompleted"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="impact-features" style="position:relative">
+        <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-size:1.5rem;opacity:.06;pointer-events:none;letter-spacing:1rem">🍃 🌸 🍃</div>
+        <div class="section-title">
+            <h2>🌱 How We Make a Difference</h2>
+            <p>Our approach combines community, technology, and nature</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h4>Community Driven</h4>
+                <p>Volunteers from across Pakistan come together to plant and protect trees in their local areas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h4>Track & Monitor</h4>
+                <p>Every plant is tracked from seedling to maturity, ensuring long-term survival and growth.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h4>Strategic Planting</h4>
+                <p>We identify areas most in need and organize targeted plantation drives for maximum impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="impact-charts" style="position:relative">
+        <div style="position:absolute;top:10px;left:30px;font-size:1.5rem;opacity:.06;pointer-events:none">🌺 🌿 🌺</div>
+        <div style="position:absolute;bottom:10px;right:30px;font-size:1.5rem;opacity:.06;pointer-events:none">🌿 🌺 🌿</div>
+        <div class="section-title">
+            <h2>📈 Growth & Progress</h2>
+            <p>Visual breakdown of our environmental efforts</p>
+        </div>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h4>🌱 Plants by Region</h4>
+                <div id="chartProvince" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h4>🏙️ Projects by City</h4>
+                <div id="chartCity" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h4>📅 Monthly Plantation</h4>
+                <div id="chartMonthly" class="bar-chart"></div>
+            </div>
+            <div class="chart-card">
+                <h4>📊 Project Status</h4>
+                <div id="chartStatus" class="bar-chart"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="impact-timeline" style="position:relative">
+        <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-size:1.5rem;opacity:.06;pointer-events:none;letter-spacing:1rem">🌼 🌿 🌼</div>
+        <div class="section-title">
+            <h2>🛤️ Our Journey</h2>
+            <p>Milestones in our mission for a greener Pakistan</p>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🌱</div>
+                <div class="timeline-content">
+                    <h4>2026 — Launch</h4>
+                    <p>Platform launched with the first 100 plants planted in Islamabad & Rawalpindi. Building a foundation for community-driven greenery.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🌿</div>
+                <div class="timeline-content">
+                    <h4>2027 — Expansion</h4>
+                    <p>Expanding to Lahore, Peshawar, and Quetta with a goal of 1,000+ plants. Growing our volunteer network across Pakistan.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🌳</div>
+                <div class="timeline-content">
+                    <h4>2028 — National Coverage</h4>
+                    <p>Aiming for national coverage with 10,000 plants and 500+ active volunteers in every major city.</p>
+                </div>
+            </div>
+            <div class="timeline-item future">
+                <div class="timeline-dot">🌍</div>
+                <div class="timeline-content">
+                    <h4>Future — Global Vision</h4>
+                    <p>Millions of plants, carbon offset tracking, corporate partnerships, and a sustainable green Pakistan for generations to come.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goal Section -->
+    <section class="impact-goal">
+        <div class="goal-container">
+            <h2>🎯 Our Goal</h2>
+            <p>Plant and protect trees across every district of Pakistan</p>
+            <div class="goal-ring">
+                <svg width="200" height="200" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="#e5e7eb" stroke-width="12"/>
+                    <circle cx="100" cy="100" r="85" fill="none" stroke="url(#goalGrad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="534" id="goalRingFill" stroke-dashoffset="534"/>
+                    <defs><linearGradient id="goalGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#bae6fd"/><stop offset="100%" stop-color="#7cc8ff"/></linearGradient></defs>
+                </svg>
+                <div class="goal-ring-text">
+                    <span class="goal-ring-num" id="goalPercent">0%</span>
+                    <span class="goal-ring-label">Complete</span>
+                </div>
+            </div>
+            <div class="goal-bar-wrap"><div class="goal-bar-fill" id="goalBarFill" style="width:0%"></div></div>
+            <p class="goal-text"><strong id="goalCurrent">0</strong> / <strong id="goalTarget">10000</strong> plants towards our goal</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="impact-cta" style="position:relative">
+        <div style="position:absolute;top:15px;left:10%;font-size:2rem;opacity:.08;pointer-events:none;letter-spacing:1rem">🌸 🌺 🌼</div>
+        <div style="position:absolute;bottom:15px;right:10%;font-size:2rem;opacity:.08;pointer-events:none;letter-spacing:1rem">🌼 🌺 🌸</div>
+        <h2>🌿 Be Part of the Change</h2>
+        <p>Join thousands of Pakistanis who are taking action for a cleaner, greener, and healthier future. Every tree counts.</p>
+        <div class="cta-buttons">
+            <a href="volunteer.html" class="btn-white">🌿 Become a Volunteer</a>
+            <a href="request.html" class="btn-outline-white">🌱 Request a Plant</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="impact.js"></script>
+</body>
+</html>

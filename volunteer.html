@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Volunteer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Volunteer Registration */
+        .reg-hero{background:linear-gradient(135deg,#f8fcff,#f1f9ff,#e8f4ff);color:var(--g900,#0c4a6e);padding:3rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .reg-hero::before{content:'🌿🌱🌳🌿🌱🌳🌿';position:absolute;bottom:10px;left:0;right:0;font-size:1.5rem;opacity:.2;letter-spacing:2rem;white-space:nowrap}
+        .reg-hero h2{font-size:2.2rem;margin-bottom:.5rem}
+        .reg-hero p{opacity:.85;font-size:1.05rem;color:var(--g700,#0369a1)}
+        .reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+        .reg-card{background:linear-gradient(135deg,#fbfdff,#f4faff);border-radius:16px;padding:1.5rem;border:2px solid var(--g200)}
+        .reg-card h4{color:var(--g800);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+        .reg-steps{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin:2rem 0}
+        .reg-step{background:#fff;border:2px solid var(--g200);border-radius:12px;padding:1rem 1.5rem;text-align:center;margin:0 .5rem;min-width:130px;transition:all .3s}
+        .reg-step:hover{border-color:var(--g500);transform:translateY(-3px)}
+        .reg-step-num{width:32px;height:32px;background:linear-gradient(135deg,var(--g600),var(--g700));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .5rem;font-weight:700;font-size:.85rem}
+        .reg-step h5{color:var(--g800);font-size:.85rem;margin-bottom:.25rem}
+        .reg-step p{color:var(--g600);font-size:.75rem}
+        .reg-arrow{display:flex;align-items:center;font-size:1.5rem;color:var(--g400);margin:0 .25rem}
+
+        /* Volunteer Dashboard Enhanced */
+        .vol-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.5rem 0}
+        .vol-stat-tile{background:linear-gradient(135deg,#fbfdff,#f4faff);border-radius:12px;padding:1.25rem;text-align:center;border:1px solid var(--g200);transition:all .3s}
+        .vol-stat-tile:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(2,132,199,.12)}
+        .vol-stat-tile .num{display:block;font-size:1.8rem;font-weight:800;color:var(--g700)}
+        .vol-stat-tile .label{font-size:.8rem;color:var(--g600);margin-top:.25rem}
+        .vol-stat-tile .icon{font-size:1.5rem;margin-bottom:.5rem}
+
+        /* Task Cards Enhanced */
+        .task-card-full{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid var(--g200);margin-bottom:1rem;transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+        .task-card-full:hover{box-shadow:0 8px 25px rgba(2,132,199,.1);border-color:var(--g300)}
+        .task-card-full .task-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem}
+        .task-card-full .task-title{font-size:1.1rem;font-weight:700;color:var(--g800)}
+        .task-card-full .task-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:.75rem 0;font-size:.85rem;color:var(--g700)}
+        .task-card-full .task-meta span{display:flex;align-items:center;gap:.35rem}
+        .task-card-full .task-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem}
+        .task-progress-bar{height:8px;background:var(--g200);border-radius:4px;margin:.5rem 0;overflow:hidden}
+        .task-progress-fill{height:100%;background:linear-gradient(90deg,var(--g500),var(--g700));border-radius:4px;transition:width .5s ease}
+
+        /* Tab System */
+        .vol-tabs-enhanced{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0;border-bottom:2px solid var(--g200);padding-bottom:.5rem}
+        .vol-tab-enhanced{padding:.6rem 1.25rem;border-radius:8px 8px 0 0;border:none;background:transparent;color:var(--g600);font-weight:600;cursor:pointer;font-size:.85rem;transition:all .3s;font-family:inherit}
+        .vol-tab-enhanced:hover{background:var(--g50);color:var(--g700)}
+        .vol-tab-enhanced.active{background:linear-gradient(135deg,var(--g600),var(--g700));color:#fff}
+
+        /* Impact Section */
+        .impact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin:1.5rem 0}
+        .impact-tile{background:linear-gradient(135deg,#fbfdff,#f4faff);border-radius:14px;padding:1.5rem;text-align:center;border:1px solid var(--g200)}
+        .impact-tile .big-num{font-size:2.2rem;font-weight:800;color:var(--g700);display:block}
+        .impact-tile .big-label{font-size:.8rem;color:var(--g600);margin-top:.25rem}
+        .impact-tile .big-icon{font-size:2rem;margin-bottom:.5rem;display:block}
+
+        /* Volunteer Profile Card */
+        .vol-profile-enhanced{background:#fff;border-radius:16px;padding:2rem;border:1px solid var(--g200);box-shadow:0 4px 15px rgba(0,0,0,.04)}
+        .vol-profile-header{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--g100)}
+        .vol-avatar-large{width:70px;height:70px;background:linear-gradient(135deg,var(--g600),var(--g700));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 4px 12px rgba(2,132,199,.3)}
+        .vol-profile-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;margin-top:1rem}
+        .vol-detail-item{padding:.6rem .85rem;background:var(--g50);border-radius:8px;border:1px solid var(--g100)}
+        .vol-detail-item .label{font-size:.7rem;color:var(--g600);text-transform:uppercase;letter-spacing:.5px}
+        .vol-detail-item .value{font-size:.9rem;color:var(--g800);font-weight:600;margin-top:.15rem}
+
+        /* Certificate Cards */
+        .cert-list-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1rem 0}
+        .cert-list-card{background:linear-gradient(135deg,#fbfdff,#f4faff);border-radius:12px;padding:1.25rem;border:1px solid var(--g200);display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:all .3s}
+        .cert-list-card:hover{box-shadow:0 6px 20px rgba(2,132,199,.12)}
+        .cert-list-info h4{color:var(--g800);font-size:.95rem;margin-bottom:.25rem}
+        .cert-list-info p{color:var(--g600);font-size:.8rem}
+
+        /* Empty State */
+        .empty-enhanced{text-align:center;padding:3rem 1.5rem;color:var(--g600)}
+        .empty-enhanced .empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.5}
+        .empty-enhanced h4{color:var(--g700);margin-bottom:.5rem}
+
+        /* Responsive */
+        @media(max-width:768px){
+            .reg-grid{grid-template-columns:1fr}
+            .reg-steps{flex-direction:column;align-items:center}
+            .reg-arrow{transform:rotate(90deg);margin:.25rem 0}
+            .vol-stats-grid{grid-template-columns:repeat(2,1fr)}
+            .vol-profile-header{flex-direction:column;text-align:center}
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html" class="active">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section id="volunteerRegSection">
+        <div class="reg-hero">
+            <h2>🌿 Become a Planting Volunteer</h2>
+            <p>Join thousands of volunteers making Pakistan greener. Register today and start your environmental journey.</p>
+        </div>
+
+        <div class="section" style="padding-top:2rem">
+            <div class="section-container">
+                <!-- How It Works -->
+                <div class="reg-steps">
+                    <div class="reg-step"><div class="reg-step-num">1</div><h5>Register</h5><p>Fill the form</p></div>
+                    <div class="reg-arrow">→</div>
+                    <div class="reg-step"><div class="reg-step-num">2</div><h5>Admin Approves</h5><p>Get verified</p></div>
+                    <div class="reg-arrow">→</div>
+                    <div class="reg-step"><div class="reg-step-num">3</div><h5>Get Assigned</h5><p>Receive tasks</p></div>
+                    <div class="reg-arrow">→</div>
+                    <div class="reg-step"><div class="reg-step-num">4</div><h5>Plant & Complete</h5><p>Do the work</p></div>
+                    <div class="reg-arrow">→</div>
+                    <div class="reg-step"><div class="reg-step-num">5</div><h5>Get Certified</h5><p>Earn rewards</p></div>
+                </div>
+
+                <!-- Registration Info Cards -->
+                <div class="reg-grid">
+                    <div class="reg-card">
+                        <h4>🎯 Why Volunteer?</h4>
+                        <ul style="color:var(--g700);line-height:1.8;padding-left:1.2rem;font-size:.9rem">
+                            <li>Make a real environmental impact</li>
+                            <li>Earn certificates for your contributions</li>
+                            <li>Meet like-minded people</li>
+                            <li>Learn about plantation & care</li>
+                            <li>Build your environmental portfolio</li>
+                        </ul>
+                    </div>
+                    <div class="reg-card">
+                        <h4>📋 What You'll Do</h4>
+                        <ul style="color:var(--g700);line-height:1.8;padding-left:1.2rem;font-size:.9rem">
+                            <li>Participate in plantation drives</li>
+                            <li>Water and care for plants</li>
+                            <li>Report plant health updates</li>
+                            <li>Help organize community events</li>
+                            <li>Spread environmental awareness</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="volunteerFormSection" style="margin-top:3rem">
+                    <div style="text-align:center;margin-bottom:2rem">
+                        <h2 style="color:var(--g800);font-size:1.8rem">📝 Volunteer Registration</h2>
+                        <p style="color:var(--g600)">Fill in your details to join the Green Pakistan volunteer community</p>
+                    </div>
+                    <form id="volunteerForm" class="platform-form" style="max-width:800px;margin:0 auto;background:#fff;padding:2rem;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--g200)">
+                        <div class="dash-section" style="margin-bottom:1.5rem">
+                            <h4 style="color:var(--g800);margin-bottom:1rem">👤 Personal Information</h4>
+                            <div class="form-row">
+                                <div class="form-group"><label>Full Name *</label><input type="text" id="volName" placeholder="Your full name" required></div>
+                                <div class="form-group"><label>Age *</label><input type="number" id="volAge" min="14" max="100" placeholder="Your age" required></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Email Address *</label><input type="email" id="volEmail" placeholder="you@email.com" required></div>
+                                <div class="form-group"><label>Contact Number *</label><input type="tel" id="volPhone" placeholder="03XX-XXXXXXX" required></div>
+                            </div>
+                        </div>
+
+                        <div class="dash-section" style="margin-bottom:1.5rem">
+                            <h4 style="color:var(--g800);margin-bottom:1rem">📍 Location & Availability</h4>
+                            <div class="form-row">
+                                <div class="form-group"><label>City *</label>
+                                    <select id="volCity" required><option value="">Select city</option><option>Islamabad</option><option>Rawalpindi</option><option>Lahore</option><option>Karachi</option><option>Peshawar</option><option>Quetta</option><option>Multan</option><option>Faisalabad</option><option>Other</option></select>
+                                </div>
+                                <div class="form-group"><label>Area / Sector *</label><input type="text" id="volArea" placeholder="e.g. F-9, DHA, Gulberg" required></div>
+                            </div>
+                            <div class="form-group"><label>Availability *</label>
+                                <select id="volAvailability" required>
+                                    <option value="">Select availability</option>
+                                    <option value="weekdays">Weekdays (Mon-Fri)</option>
+                                    <option value="weekends">Weekends Only (Sat-Sun)</option>
+                                    <option value="evenings">Evenings</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="dash-section" style="margin-bottom:1.5rem">
+                            <h4 style="color:var(--g800);margin-bottom:1rem">🌱 Skills & Experience</h4>
+                            <div class="form-group"><label>Skills</label>
+                                <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem">
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="gardening"> Gardening</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="irrigation"> Irrigation</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="tree_climbing"> Tree Climbing</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="first_aid"> First Aid</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="event_mgmt"> Event Management</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="social_media"> Social Media</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="photography"> Photography</label>
+                                    <label class="checkbox-label" style="margin:0"><input type="checkbox" name="volSkills" value="none"> No Special Skills</label>
+                                </div>
+                            </div>
+                            <div class="form-group"><label>Previous Plantation Experience *</label>
+                                <select id="volExperience" required>
+                                    <option value="">Select experience level</option>
+                                    <option value="none">No previous experience</option>
+                                    <option value="beginner">Beginner (1-2 activities)</option>
+                                    <option value="intermediate">Intermediate (3-10 activities)</option>
+                                    <option value="experienced">Experienced (10+ activities)</option>
+                                    <option value="expert">Expert / Trainer</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label>Areas of Interest</label><input type="text" id="volInterests" placeholder="e.g. Tree plantation, park maintenance, awareness campaigns"></div>
+                            <div class="form-group"><label>Why do you want to volunteer? (optional)</label><textarea id="volMotivation" rows="2" placeholder="Tell us what motivates you..."></textarea></div>
+                        </div>
+
+                        <div id="parentConsentSection" class="consent-section hidden">
+                            <div class="consent-box">
+                                <h4>👤 Parent / Guardian Consent Required</h4>
+                                <p>You are under 18. A parent or guardian must consent to your participation.</p>
+                                <div class="form-row">
+                                    <div class="form-group"><label>Parent/Guardian Name *</label><input type="text" id="parentName" placeholder="Full name"></div>
+                                    <div class="form-group"><label>Parent/Guardian Contact *</label><input type="tel" id="parentPhone" placeholder="03XX-XXXXXXX"></div>
+                                </div>
+                                <label class="checkbox-label"><input type="checkbox" id="parentConsent"> I confirm I am the parent/guardian and consent to this registration. *</label>
+                            </div>
+                        </div>
+
+                        <label class="checkbox-label"><input type="checkbox" id="volTerms" required> I agree to volunteer guidelines and will participate responsibly. *</label>
+                        <button type="submit" class="btn btn-primary btn-full" style="margin-top:1rem;padding:.9rem">🌿 Register as Volunteer</button>
+                    </form>
+                </div>
+
+                <div id="regSuccess" class="confirmation hidden" style="max-width:600px;margin:2rem auto">
+                    <span class="confirmation-icon">🎉</span>
+                    <h3>Registration Submitted Successfully!</h3>
+                    <p>Your Volunteer ID: <strong id="newVolId"></strong></p>
+                    <p style="margin-top:.5rem">Your application is now pending admin approval. You'll be able to see tasks once approved.</p>
+                    <p style="margin-top:.5rem;color:var(--g600);font-size:.85rem">💡 Tip: You can also sign in from the Sign In page to access your dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Dashboard -->
+    <div id="volunteerDashboard" class="hidden">
+        <div class="section" style="padding-top:1.5rem">
+            <div class="section-container" style="max-width:1100px">
+                <div class="vol-dashboard">
+                    <div class="vol-topbar">
+                        <div class="vol-profile">
+                            <span class="vol-avatar" id="volAvatar">🌱</span>
+                            <div>
+                                <h3 id="volDisplayName">Volunteer</h3>
+                                <span class="vol-badge" id="volBadge">New Volunteer</span>
+                                <span class="status-badge status-pending" id="volStatusBadge" style="margin-left:.5rem">Pending</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:.5rem;align-items:center">
+                            <a href="index.html" class="btn btn-outline btn-sm">🏠 Home</a>
+                            <button class="btn btn-outline btn-sm" id="volLogoutBtn">Logout</button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Overview -->
+                    <div class="vol-stats-grid">
+                        <div class="vol-stat-tile"><span class="icon">📋</span><span class="num" id="volStatTotal">0</span><span class="label">Total Tasks</span></div>
+                        <div class="vol-stat-tile"><span class="icon">✅</span><span class="num" id="volStatCompleted">0</span><span class="label">Completed</span></div>
+                        <div class="vol-stat-tile"><span class="icon">⏳</span><span class="num" id="volStatPending">0</span><span class="label">Pending</span></div>
+                        <div class="vol-stat-tile"><span class="icon">🌱</span><span class="num" id="volStatPlants">0</span><span class="label">Plants Planted</span></div>
+                        <div class="vol-stat-tile"><span class="icon">🏆</span><span class="num" id="volStatCerts">0</span><span class="label">Certificates</span></div>
+                        <div class="vol-stat-tile"><span class="icon">📍</span><span class="num" id="volStatAreas">0</span><span class="label">Areas</span></div>
+                    </div>
+
+                    <!-- Tabs -->
+                    <div class="vol-tabs-enhanced">
+                        <button class="vol-tab-enhanced active" data-tab="available">📋 Available Tasks</button>
+                        <button class="vol-tab-enhanced" data-tab="mytasks">🌳 My Tasks</button>
+                        <button class="vol-tab-enhanced" data-tab="impact">📊 My Impact</button>
+                        <button class="vol-tab-enhanced" data-tab="certs">🏆 Certificates</button>
+                        <button class="vol-tab-enhanced" data-tab="profile">👤 Profile</button>
+                    </div>
+
+                    <!-- Available Tasks -->
+                    <div class="vol-tab-content active" id="vtab-available">
+                        <div style="margin:1rem 0">
+                            <h4 style="color:var(--g800);margin-bottom:1rem">📋 Available Tasks (Open for Volunteers)</h4>
+                            <div id="availableTasks"><div class="empty-enhanced"><div class="empty-icon">📋</div><h4>No Available Tasks</h4><p>Check back later for new plantation opportunities!</p></div></div>
+                        </div>
+                    </div>
+
+                    <!-- My Tasks -->
+                    <div class="vol-tab-content" id="vtab-mytasks">
+                        <div style="margin:1rem 0">
+                            <h4 style="color:var(--g800);margin-bottom:.5rem">🌳 My Tasks</h4>
+                            <p style="color:var(--g600);font-size:.85rem;margin-bottom:1rem">Tasks assigned to you or that you've joined. Update progress and submit for verification.</p>
+                            <div id="myTasks"><div class="empty-enhanced"><div class="empty-icon">🌳</div><h4>No Tasks Yet</h4><p>Join available tasks or wait for admin assignment.</p></div></div>
+                        </div>
+                    </div>
+
+                    <!-- My Impact -->
+                    <div class="vol-tab-content" id="vtab-impact">
+                        <div style="margin:1rem 0">
+                            <h4 style="color:var(--g800);margin-bottom:1rem">📊 My Environmental Impact</h4>
+                            <div class="impact-cards" id="volImpactCards"></div>
+                            <div class="dash-section" style="margin-top:1.5rem">
+                                <h4>🏅 Achievement Badges</h4>
+                                <div id="volAchievements" class="achievements-grid" style="margin-top:.75rem"></div>
+                            </div>
+                            <div class="dash-section" style="margin-top:1.5rem">
+                                <h4>📈 Contribution History</h4>
+                                <div id="volContributionHistory" style="margin-top:.75rem"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificates -->
+                    <div class="vol-tab-content" id="vtab-certs">
+                        <div style="margin:1rem 0">
+                            <h4 style="color:var(--g800);margin-bottom:.5rem">🏆 My Certificates</h4>
+                            <p style="color:var(--g600);font-size:.85rem;margin-bottom:1rem">Earn certificates by completing verified plantation tasks.</p>
+                            <div id="volCertsList"><div class="empty-enhanced"><div class="empty-icon">🏆</div><h4>No Certificates Yet</h4><p>Complete and verify tasks to earn certificates!</p></div></div>
+                            <h4 style="color:var(--g800);margin:2rem 0 1rem">🔒 Achievement Levels</h4>
+                            <div id="volAchievementLevels" class="achievement-levels"></div>
+                        </div>
+                    </div>
+
+                    <!-- Profile -->
+                    <div class="vol-tab-content" id="vtab-profile">
+                        <div style="margin:1rem 0">
+                            <div class="vol-profile-enhanced" id="volProfileCard"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Detail Modal -->
+    <div id="taskDetailModal" class="modal hidden">
+        <div class="modal-content" style="max-width:650px">
+            <div class="modal-header">
+                <h3>📋 Task Details</h3>
+                <button class="modal-close" onclick="closeTaskModal()">✕</button>
+            </div>
+            <div id="taskDetailBody"></div>
+        </div>
+    </div>
+
+    <!-- Task Progress Modal -->
+    <div id="taskProgressModal" class="modal hidden">
+        <div class="modal-content" style="max-width:550px">
+            <div class="modal-header">
+                <h3>📊 Update Task Progress</h3>
+                <button class="modal-close" onclick="closeProgressModal()">✕</button>
+            </div>
+            <form id="taskProgressForm">
+                <input type="hidden" id="progressTaskId">
+                <div class="form-group"><label>Current Status *</label>
+                    <select id="progressStatus" required>
+                        <option value="in_progress">🌱 Started Planting</option>
+                        <option value="submitted_for_review">📋 Completed - Submit for Review</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Plants Planted</label><input type="number" id="progressPlants" min="0" placeholder="e.g. 15"></div>
+                    <div class="form-group"><label>Hours Spent</label><input type="number" id="progressHours" min="0" placeholder="e.g. 4"></div>
+                </div>
+                <div class="form-group"><label>Progress Notes</label><textarea id="progressNotes" rows="3" placeholder="Describe what you've done, any issues, photos taken, etc."></textarea></div>
+                <div class="form-group"><label>Location Verified (GPS/landmark)</label><input type="text" id="progressLocation" placeholder="Confirm exact location"></div>
+                <button type="submit" class="btn btn-primary btn-full">💾 Save Progress</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="data.js"></script>
+    <script src="volunteer.js"></script>
+
+                        </body>
+</html>

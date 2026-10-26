@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Pakistan — Plant Care & Tracking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🌱 Green Pakistan</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="request.html">Request Plant</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="plantcare.html" class="active">Plant Care</a></li>
+                <li><a href="certificate.html">Certificate</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section page-header">
+        <div class="section-container">
+            <h2>🩺 Plant Care & Tracking</h2>
+            <p class="section-subtitle">Track plant health long after plantation day. We don't just plant — we protect and nurture.</p>
+
+            <!-- How Tracking Works -->
+            <div class="dash-section">
+                <h3>📋 How Plant Tracking Works</h3>
+                <div class="care-flow">
+                    <div class="care-step">🌱 Planned</div>
+                    <div class="care-arrow">→</div>
+                    <div class="care-step">🌿 Planted</div>
+                    <div class="care-arrow">→</div>
+                    <div class="care-step">📅 1 Month Check</div>
+                    <div class="care-arrow">→</div>
+                    <div class="care-step">📅 3 Month Check</div>
+                    <div class="care-arrow">→</div>
+                    <div class="care-step">✅ Healthy</div>
+                </div>
+            </div>
+
+            <!-- Plant Records -->
+            <div class="dash-section">
+                <h3>🌳 Plant Records</h3>
+                <p style="color:var(--g600);margin-bottom:1rem">All plantation records with their current status.</p>
+                <div id="careRecordsList" class="care-records-list">
+                    <p class="empty-state">No plant records yet.</p>
+                </div>
+            </div>
+
+            <!-- Add Care Update (authorized users) -->
+            <div class="dash-section">
+                <h3>➕ Add Care Update</h3>
+                <p style="color:var(--g600);margin-bottom:1rem">For authorized volunteers/organizers to update plant condition.</p>
+                <form id="careForm" class="platform-form" style="max-width:600px">
+                    <div class="form-group"><label>Plant Name *</label><input type="text" id="carePlantName" placeholder="e.g. Neem, Mango" required></div>
+                    <div class="form-group"><label>Location *</label><input type="text" id="careLocation" placeholder="Area, City" required></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>Current Status *</label>
+                            <select id="careStatus" required><option value="healthy">✅ Healthy</option><option value="needs_care">⚠️ Needs Care</option><option value="critical">🔴 Critical</option><option value="watering">💧 Needs Watering</option><option value="diseased">🦠 Diseased</option></select>
+                        </div>
+                        <div class="form-group"><label>Check Date *</label><input type="date" id="careDate" required></div>
+                    </div>
+                    <div class="form-group"><label>Notes</label><textarea id="careNotes" rows="2" placeholder="Observations, actions taken, etc."></textarea></div>
+                    <div class="form-group"><label>Next Check Date (optional)</label><input type="date" id="careNextDate"></div>
+                    <button type="submit" class="btn btn-primary btn-full">💾 Save Care Update</button>
+                </form>
+                <div id="careSuccess" class="confirmation hidden">
+                    <span class="confirmation-icon">✅</span>
+                    <h3>Care Update Saved!</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-logo">🌱 Green Pakistan</p>
+            <p>Connecting people, volunteers, and nature for a greener future.</p>
+            <p class="footer-copy">&copy; 2026 Green Pakistan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="plantcare.js"></script>
+</body>
+</html>

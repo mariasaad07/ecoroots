@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Green Pakistan — Plantation Platform</title>
+<style>
+:root{--g:#218739;--g2:#dff4e3;--dark:#153b24;--bg:#f6faf7;--muted:#65756b;--card:#fff;--line:#e4ece6}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--dark)}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:800;font-size:20px;color:var(--g);cursor:pointer}.logo span{color:var(--dark)}
+nav{display:flex;gap:5px;flex-wrap:wrap}nav button,.btn{border:0;background:transparent;padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:650;color:var(--dark)}nav button:hover{background:var(--g2)}
+.btn.primary{background:var(--g);color:#fff}.btn.light{background:var(--g2);color:var(--g)}
+main{max-width:1180px;margin:auto;padding:28px 22px 60px}.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(135deg,#e8f7ea,#f7fcf8);border:1px solid #dceee0;border-radius:28px;padding:58px 48px;display:grid;grid-template-columns:1.4fr .8fr;gap:30px;align-items:center}
+h1{font-size:clamp(38px,6vw,66px);line-height:1.02;margin:10px 0 18px}.hero p{font-size:18px;color:var(--muted);max-width:650px;line-height:1.7}
+.earth{height:260px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#9bdd9e 0 7%,transparent 8%),radial-gradient(circle at 65% 60%,#54b85e 0 13%,transparent 14%),#bfe8c5;display:flex;align-items:center;justify-content:center;font-size:100px;box-shadow:0 25px 60px #acd9b4}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.section-title{display:flex;justify-content:space-between;align-items:end;margin:35px 0 16px}.section-title h2{margin:0;font-size:28px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #153b2408}.stat strong{font-size:30px;display:block;margin-top:7px}.muted{color:var(--muted)}
+.icon{font-size:26px}.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--g2);color:var(--g);font-size:12px;font-weight:750}
+.form{max-width:760px}.field{margin:14px 0}.field label{display:block;font-weight:700;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #ccd9cf;border-radius:10px;font:inherit}.field textarea{min-height:110px}
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:22px 0}.step{padding:13px 7px;text-align:center;border-radius:12px;background:#eef4ef;font-size:12px}.step.done{background:var(--g2);color:var(--g);font-weight:750}
+.map{min-height:430px;border-radius:22px;background:#dcefe0;position:relative;overflow:hidden;padding:30px}.pak{margin:auto;width:55%;height:360px;background:#b8dfbe;clip-path:polygon(40% 0,70% 8%,77% 25%,96% 31%,84% 47%,88% 64%,66% 66%,58% 91%,41% 76%,24% 87%,20% 63%,4% 54%,16% 37%,8% 20%,30% 17%);display:flex;align-items:center;justify-content:center;font-size:55px}.marker{position:absolute;background:#fff;border:2px solid var(--g);border-radius:50%;width:16px;height:16px;box-shadow:0 2px 8px #0002}.m1{left:48%;top:27%}.m2{left:57%;top:44%}.m3{left:39%;top:57%}.m4{left:65%;top:62%}
+.task{display:flex;justify-content:space-between;gap:15px;align-items:center}.task+.task{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}
+.cert{background:linear-gradient(135deg,#fff,#eff9f0);border:8px double #5e9d67;border-radius:18px;padding:40px;text-align:center}.cert h2{font-family:Georgia,serif;font-size:34px}.cert .name{font-size:30px;font-weight:800;color:var(--g);margin:20px}
+footer{padding:30px;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding:35px 25px}.grid{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(3,1fr)}nav{display:none}.earth{height:190px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div class="logo" onclick="show('home')">🌱 Green <span>Pakistan</span></div>
+<nav>
+<button onclick="show('home')">Home</button><button onclick="show('dashboard')">Dashboard</button>
+<button onclick="show('locations')">Plant Locations</button><button onclick="show('request')">Request a Plant</button>
+<button onclick="show('volunteer')">Volunteer</button><button onclick="show('impact')">Impact</button>
+<button onclick="show('care')">Plant Care</button><button onclick="show('myimpact')">My Impact</button>
+</nav></div></header>
+
+<main>
+<section id="home" class="page active">
+<div class="hero"><div><span class="pill">🌍 A greener future for Pakistan</span><h1>Grow Today,<br>Green Tomorrow.</h1><p>Connect communities, volunteers and responsible organizations to request, plant and care for trees — while tracking the impact together.</p>
+<div class="actions"><button class="btn primary" onclick="show('request')">🌱 Request a Plant</button><button class="btn light" onclick="show('volunteer')">🌿 Become a Volunteer</button></div></div><div class="earth">🌳</div></div>
+<div class="section-title"><h2>Our growing impact</h2></div><div class="grid">
+<div class="card stat">🌱<strong>12,450</strong><span class="muted">Plants Planted</span></div><div class="card stat">📍<strong>86</strong><span class="muted">Areas Covered</span></div><div class="card stat">👥<strong>740</strong><span class="muted">Volunteers</span></div><div class="card stat">🏆<strong>312</strong><span class="muted">Completed Projects</span></div></div>
+<div class="section-title"><h2>How it works</h2></div><div class="grid3"><div class="card"><b>01 · Request</b><p class="muted">A customer requests plantation in a suitable area.</p></div><div class="card"><b>02 · Verify & Assign</b><p class="muted">The location is reviewed and an approved organizer is assigned.</p></div><div class="card"><b>03 · Plant & Track</b><p class="muted">The activity is completed, verified and followed with plant care.</p></div></div>
+</section>
+
+<section id="dashboard" class="page"><div class="section-title"><h2>📊 Dashboard</h2><span class="pill">Welcome back!</span></div>
+<div class="grid"><div class="card stat">📋<strong>6</strong><span class="muted">My Requests</span></div><div class="card stat">🌳<strong>28</strong><span class="muted">Plants Contributed</span></div><div class="card stat">✅<strong>8</strong><span class="muted">Completed Tasks</span></div><div class="card stat">🏆<strong>3</strong><span class="muted">Certificates</span></div></div>
+<div class="section-title"><h2>Recent activity</h2></div><div class="card"><div class="task"><span>🌱 Plantation request in Rawalpindi</span><span class="pill">Under Review</span></div><div class="task"><span>🌳 Community plantation task</span><span class="pill">Completed</span></div><div class="task"><span>💧 Plant care check</span><span class="pill">Scheduled</span></div></div>
+</section>
+
+<section id="locations" class="page"><div class="section-title"><h2>📍 Plant Locations</h2><span class="pill">Pakistan</span></div>
+<div class="grid3"><div class="card"><b>Search & Filters</b><div class="field"><input placeholder="Search city or area"></div><div class="field"><select><option>All Provinces</option><option>Punjab</option><option>Sindh</option><option>Khyber Pakhtunkhwa</option><option>Balochistan</option></select></div><div class="field"><select><option>All Plant Types</option><option>Native Trees</option><option>Fruit Trees</option><option>Shade Trees</option></select></div></div>
+<div class="map" style="grid-column:span 2"><div class="pak">🇵🇰</div><i class="marker m1"></i><i class="marker m2"></i><i class="marker m3"></i><i class="marker m4"></i></div></div>
+<div class="section-title"><h2>Featured plantation areas</h2></div><div class="grid3"><div class="card"><span class="pill">Active</span><h3>Rawalpindi</h3><p class="muted">420 plants · 8 locations</p></div><div class="card"><span class="pill">Active</span><h3>Lahore</h3><p class="muted">680 plants · 12 locations</p></div><div class="card"><span class="pill">Completed</span><h3>Islamabad</h3><p class="muted">1,120 plants · 16 locations</p></div></div>
+</section>
+
+<section id="request" class="page"><div class="section-title"><h2>🌱 Request a Plant</h2></div><div class="card form"><p class="muted">Tell us where you would like a plantation activity to be considered.</p>
+<div class="field"><label>Your Name</label><input id="rname" placeholder="Enter your name"></div><div class="field"><label>City / Area</label><input placeholder="e.g. Rawalpindi, Satellite Town"></div><div class="field"><label>Location</label><input placeholder="Area, park, school or community space"></div><div class="field"><label>Plant / Tree Type</label><select><option>Native trees</option><option>Fruit trees</option><option>Shade trees</option><option>Other</option></select></div><div class="field"><label>Approximate Number</label><input type="number" min="1" placeholder="e.g. 20"></div><div class="field"><label>Additional Details</label><textarea placeholder="Tell us anything important about the requested location..."></textarea></div><button class="btn primary" onclick="submitRequest()">Submit Plantation Request</button><p id="requestMsg" class="muted"></p></div></section>
+
+<section id="volunteer" class="page"><div class="hero" style="padding:38px"><div><span class="pill">🌿 Join the community</span><h1 style="font-size:42px">Turn your interest into impact.</h1><p>Become a volunteer and participate in supervised plantation activities. Volunteers under 18 require appropriate parent/guardian consent and responsible adult supervision.</p><button class="btn primary" onclick="document.getElementById('vform').scrollIntoView({behavior:'smooth'})">Join as Volunteer</button></div><div style="font-size:120px;text-align:center">🌱</div></div>
+<div id="vform" class="card form" style="margin-top:20px"><h2>Volunteer Registration</h2><div class="field"><label>Name</label><input placeholder="Your name"></div><div class="field"><label>Age Range</label><select><option>14–17</option><option>18–25</option><option>26–40</option><option>41+</option></select></div><div class="field"><label>City</label><input placeholder="Your city"></div><div class="field"><label>Interests</label><input placeholder="e.g. tree planting, plant care, community work"></div><button class="btn primary" onclick="alert('Volunteer registration submitted for review.')">Submit Registration</button></div>
+<div class="section-title"><h2>Available tasks</h2></div><div class="card"><div class="task"><div><b>🌳 Community Plantation — Rawalpindi</b><p class="muted">50 plants · Supervised activity</p></div><button class="btn light" onclick="alert('Task application submitted for review.')">Apply</button></div><div class="task"><div><b>🌱 School Green Area — Islamabad</b><p class="muted">30 plants · Adult-supervised activity</p></div><button class="btn light" onclick="alert('Task application submitted for review.')">Apply</button></div></div></section>
+
+<section id="impact" class="page"><div class="section-title"><h2>🌍 Our Green Impact</h2></div><div class="grid"><div class="card stat">🌱<strong>12,450</strong><span class="muted">Plants Planted</span></div><div class="card stat">📍<strong>86</strong><span class="muted">Locations</span></div><div class="card stat">👥<strong>740</strong><span class="muted">Volunteers</span></div><div class="card stat">🏆<strong>312</strong><span class="muted">Projects</span></div></div>
+<div class="section-title"><h2>Progress toward our goal</h2></div><div class="card"><b>12,450 / 20,000 plants</b><div style="height:16px;background:#e5eee7;border-radius:99px;margin-top:12px"><div style="width:62%;height:100%;background:var(--g);border-radius:99px"></div></div><p class="muted">62% of the current plantation goal reached.</p></div>
+<div class="section-title"><h2>Plants by province</h2></div><div class="grid3"><div class="card"><b>Punjab</b><p>6,800 plants</p></div><div class="card"><b>Sindh</b><p>2,900 plants</p></div><div class="card"><b>Khyber Pakhtunkhwa</b><p>2,100 plants</p></div></div></section>
+
+<section id="care" class="page"><div class="section-title"><h2>🌳 Plant Care & Tracking</h2></div><div class="card"><h3>Community Plantation — Rawalpindi</h3><div class="timeline"><div class="step done">Planned</div><div class="step done">Planted</div><div class="step done">1 Month Check</div><div class="step">3 Month Check</div><div class="step">6 Month Check</div><div class="step">Healthy</div></div><p><b>Current status:</b> <span class="pill">Needs 3-month check</span></p></div>
+<div class="section-title"><h2>Plant record</h2></div><div class="grid3"><div class="card"><b>Plant Type</b><p class="muted">Native tree</p></div><div class="card"><b>Quantity</b><p class="muted">50 plants</p></div><div class="card"><b>Next Check</b><p class="muted">Scheduled</p></div></div></section>
+
+<section id="myimpact" class="page"><div class="section-title"><h2>🏆 My Impact</h2></div><div class="grid"><div class="card stat">🌱<strong>28</strong><span class="muted">Plants Contributed</span></div><div class="card stat">✅<strong>8</strong><span class="muted">Tasks Completed</span></div><div class="card stat">📍<strong>4</strong><span class="muted">Areas Covered</span></div><div class="card stat">🏆<strong>3</strong><span class="muted">Certificates</span></div></div>
+<div class="section-title"><h2>Certificates</h2></div><div class="cert"><div>🌿 GREEN PAKISTAN</div><h2>Certificate of Environmental Contribution</h2><p>This certificate is awarded in recognition of a valuable contribution to plantation and environmental improvement.</p><div class="name">Volunteer Member</div><p>Community Plantation · Rawalpindi · 10 September 2026</p><p><b>Certificate ID:</b> GP-2026-0008</p><button class="btn primary" onclick="window.print()">Print / Save Certificate</button></div>
+<div class="section-title"><h2>Achievements</h2></div><div class="grid3"><div class="card">🌱 <b>First Plantation</b><p class="muted">Unlocked</p></div><div class="card">🌿 <b>Active Volunteer</b><p class="muted">Unlocked</p></div><div class="card">🌳 <b>10 Plant Contributions</b><p class="muted">Unlocked</p></div></div></section>
+</main>
+<footer>🌱 Green Pakistan · Plant • Care • Impact</footer>
+<script>
+function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function submitRequest(){let n=document.getElementById('rname').value.trim();let m=document.getElementById('requestMsg');m.textContent=n?`Thank you, ${n}. Your plantation request has been submitted for review.`:'Please enter your name before submitting.';m.style.color=n?'#218739':'#a33'}
+</script>
+</body></html>
