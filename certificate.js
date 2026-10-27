@@ -25,7 +25,7 @@
     document.getElementById('certUniqueId').textContent = cert.id;
 
     if (cert.status === 'issued') {
-        document.getElementById('certVerification').innerHTML = '<span>✅</span><span>Verified & Issued by Green Pakistan</span>';
+        document.getElementById('certVerification').innerHTML = '<span>✅</span><span>Verified & Issued by ECO Roots</span>';
         // Only celebrate if this is a newly awarded certificate
         const isNewAward = !sessionStorage.getItem('certViewed_' + cert.id);
         if (isNewAward) {
@@ -47,7 +47,7 @@
         document.getElementById('certLocation').textContent = 'F-9 Park, Islamabad';
         document.getElementById('certDate').textContent = 'January 15, 2026';
         document.getElementById('certUniqueId').textContent = 'CERT-DEMO001';
-        document.getElementById('certVerification').innerHTML = '<span>✅</span><span>Verified & Issued by Green Pakistan</span>';
+        document.getElementById('certVerification').innerHTML = '<span>✅</span><span>Verified & Issued by ECO Roots</span>';
         // Demo always celebrates
         setTimeout(() => celebrate(), 600);
     }
@@ -222,7 +222,7 @@
         try {
             const canvas = await html2canvas(frame, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
             const link = document.createElement('a');
-            link.download = `GreenPakistan_Certificate_${cert?.id || 'MARIA_SAAD'}.png`;
+            link.download = `ECO_Roots_Certificate_${cert?.id || 'MARIA_SAAD'}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
         } catch (err) {
@@ -233,9 +233,9 @@
     // Share
     document.getElementById('certShareBtn')?.addEventListener('click', () => {
         const shareUrl = window.location.href;
-        const shareText = `I earned a Certificate of Environmental Contribution from Green Pakistan! 🌳\nTask: ${cert?.taskName || 'F-9 Park Tree Plantation Drive'}\nPlants: ${cert?.plants || 15}`;
+        const shareText = `I earned a Certificate of Environmental Contribution from ECO Roots! 🌳\nTask: ${cert?.taskName || 'F-9 Park Tree Plantation Drive'}\nPlants: ${cert?.plants || 15}`;
         if (navigator.share) {
-            navigator.share({ title: 'Green Pakistan Certificate', text: shareText, url: shareUrl }).catch(() => {});
+            navigator.share({ title: 'ECO Roots Certificate', text: shareText, url: shareUrl }).catch(() => {});
         } else if (navigator.clipboard) {
             navigator.clipboard.writeText(shareText + '\n' + shareUrl).then(() => alert('Certificate link copied to clipboard!'));
         } else {

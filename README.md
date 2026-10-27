@@ -1,2 +1,2 @@
-# ecoroots
-EcoRoots: Tree Plantation Website.
+# ECO Roots
+ECO Roots: Tree Plantation Website.

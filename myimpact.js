@@ -75,7 +75,7 @@ function updateMyImpact() {
                                     <span class="cert-img-tree">🌳</span>
                                     <span class="cert-img-logo">🌱</span>
                                 </div>
-                                <div class="cert-img-org">GREEN PAKISTAN</div>
+                                <div class="cert-img-org">ECO ROOTS</div>
                                 <div class="cert-img-title">Certificate of Environmental Contribution</div>
                                 <div class="cert-img-line"></div>
                                 <div class="cert-img-awarded">This is to certify that</div>

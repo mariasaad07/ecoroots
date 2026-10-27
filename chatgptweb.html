@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Green Pakistan — Plantation Platform</title>
+<title>ECO Roots — Plantation Platform</title>
 <style>
 :root{--g:#218739;--g2:#dff4e3;--dark:#153b24;--bg:#f6faf7;--muted:#65756b;--card:#fff;--line:#e4ece6}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--dark)}
@@ -32,7 +32,7 @@ footer{padding:30px;text-align:center;color:var(--muted);border-top:1px solid va
 </head>
 <body>
 <header><div class="nav">
-<div class="logo" onclick="show('home')">🌱 Green <span>Pakistan</span></div>
+<div class="logo" onclick="show('home')">🌱 ECO <span>Roots</span></div>
 <nav>
 <button onclick="show('home')">Home</button><button onclick="show('dashboard')">Dashboard</button>
 <button onclick="show('locations')">Plant Locations</button><button onclick="show('request')">Request a Plant</button>
@@ -42,7 +42,7 @@ footer{padding:30px;text-align:center;color:var(--muted);border-top:1px solid va
 
 <main>
 <section id="home" class="page active">
-<div class="hero"><div><span class="pill">🌍 A greener future for Pakistan</span><h1>Grow Today,<br>Green Tomorrow.</h1><p>Connect communities, volunteers and responsible organizations to request, plant and care for trees — while tracking the impact together.</p>
+<div class="hero"><div><span class="pill">🌍 A greener future for Pakistan</span><h1>Plant today,<br>Protect tomorrow.</h1><p>Connect communities, volunteers and responsible organizations to request, plant and care for trees — while tracking the impact together.</p>
 <div class="actions"><button class="btn primary" onclick="show('request')">🌱 Request a Plant</button><button class="btn light" onclick="show('volunteer')">🌿 Become a Volunteer</button></div></div><div class="earth">🌳</div></div>
 <div class="section-title"><h2>Our growing impact</h2></div><div class="grid">
 <div class="card stat">🌱<strong>12,450</strong><span class="muted">Plants Planted</span></div><div class="card stat">📍<strong>86</strong><span class="muted">Areas Covered</span></div><div class="card stat">👥<strong>740</strong><span class="muted">Volunteers</span></div><div class="card stat">🏆<strong>312</strong><span class="muted">Completed Projects</span></div></div>
@@ -75,10 +75,10 @@ footer{padding:30px;text-align:center;color:var(--muted);border-top:1px solid va
 <div class="section-title"><h2>Plant record</h2></div><div class="grid3"><div class="card"><b>Plant Type</b><p class="muted">Native tree</p></div><div class="card"><b>Quantity</b><p class="muted">50 plants</p></div><div class="card"><b>Next Check</b><p class="muted">Scheduled</p></div></div></section>
 
 <section id="myimpact" class="page"><div class="section-title"><h2>🏆 My Impact</h2></div><div class="grid"><div class="card stat">🌱<strong>28</strong><span class="muted">Plants Contributed</span></div><div class="card stat">✅<strong>8</strong><span class="muted">Tasks Completed</span></div><div class="card stat">📍<strong>4</strong><span class="muted">Areas Covered</span></div><div class="card stat">🏆<strong>3</strong><span class="muted">Certificates</span></div></div>
-<div class="section-title"><h2>Certificates</h2></div><div class="cert"><div>🌿 GREEN PAKISTAN</div><h2>Certificate of Environmental Contribution</h2><p>This certificate is awarded in recognition of a valuable contribution to plantation and environmental improvement.</p><div class="name">Volunteer Member</div><p>Community Plantation · Rawalpindi · 10 September 2026</p><p><b>Certificate ID:</b> GP-2026-0008</p><button class="btn primary" onclick="window.print()">Print / Save Certificate</button></div>
+<div class="section-title"><h2>Certificates</h2></div><div class="cert"><div>🌿 ECO ROOTS</div><h2>Certificate of Environmental Contribution</h2><p>This certificate is awarded in recognition of a valuable contribution to plantation and environmental improvement.</p><div class="name">Volunteer Member</div><p>Community Plantation · Rawalpindi · 10 September 2026</p><p><b>Certificate ID:</b> ER-2026-0008</p><button class="btn primary" onclick="window.print()">Print / Save Certificate</button></div>
 <div class="section-title"><h2>Achievements</h2></div><div class="grid3"><div class="card">🌱 <b>First Plantation</b><p class="muted">Unlocked</p></div><div class="card">🌿 <b>Active Volunteer</b><p class="muted">Unlocked</p></div><div class="card">🌳 <b>10 Plant Contributions</b><p class="muted">Unlocked</p></div></div></section>
 </main>
-<footer>🌱 Green Pakistan · Plant • Care • Impact</footer>
+<footer>🌱 ECO Roots · Plant • Care • Impact</footer>
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
 function submitRequest(){let n=document.getElementById('rname').value.trim();let m=document.getElementById('requestMsg');m.textContent=n?`Thank you, ${n}. Your plantation request has been submitted for review.`:'Please enter your name before submitting.';m.style.color=n?'#218739':'#a33'}

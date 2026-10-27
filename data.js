@@ -250,7 +250,7 @@ function generateCertImage(cert, width, height) {
     ctx.fillStyle = '#92400e';
     ctx.font = 'bold 8px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('GREEN PAKISTAN', cx, m + 38);
+    ctx.fillText('ECO ROOTS', cx, m + 38);
 
     ctx.fillStyle = '#78350f';
     ctx.font = 'bold 14px Georgia';
@@ -301,7 +301,7 @@ function generateCertImage(cert, width, height) {
     ctx.fillText('\u2705', cx, h - m - 18);
 
     ctx.beginPath(); ctx.moveTo(w - 120, h - m - 25); ctx.lineTo(w - 40, h - m - 25); ctx.stroke();
-    ctx.fillText('Green Pakistan', w - 80, h - m - 18);
+    ctx.fillText('ECO Roots', w - 80, h - m - 18);
 
     ctx.fillStyle = '#92400e';
     ctx.font = '6px Arial';
